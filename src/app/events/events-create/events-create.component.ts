@@ -52,7 +52,7 @@ export class EventsCreateComponent implements OnInit {
 
   public createEvent() {
     this.eventsService.createEvent({
-      name: this.form.value.title,
+      title: this.form.value.title,
       dateStart: this.datePipe.transform(this.form.value.dateStart, 'yyyy-MM-dd'),
       dateEnd: this.datePipe.transform(this.form.value.dateEnd, 'yyyy-MM-dd'),
       description: this.form.value.description

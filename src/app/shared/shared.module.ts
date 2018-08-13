@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { TitleComponent } from './components/title/title.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -11,7 +12,8 @@ import { DescriptionReduce } from './pipes/description-reduce.pipe';
 const modules = [
   RouterModule,
   CommonModule,
-  FontAwesomeModule
+  FontAwesomeModule,
+  NgbModule
 ];
 
 const components = [

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.card {
+  border-radius: .50rem !important;
+}
+
+.form-rounded {
+  border-radius: 2rem;
+}

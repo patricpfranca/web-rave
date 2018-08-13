@@ -11,7 +11,7 @@
           <p class="card-text">{{ event.description | descriptionReduce:130 }}</p>
         </div>
         <div class="footer-event">
-          <a (click)="eventById(event._id)" [routerLink]="['/events/', event._id]" class="btn btn-primary btn-sm form-rounded">+ Detalhes</a>
+          <a [routerLink]="['/events', event._id]" class="btn btn-primary btn-sm form-rounded">+ Detalhes</a>
         </div>
       </div>
     </div>

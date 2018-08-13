@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../providers/events.service';
 import { Event } from '../shared/event.model';
@@ -10,7 +9,7 @@ import { Event } from '../shared/event.model';
 })
 export class EventsComponent implements OnInit {
 
-  public events: Observable<Event[]>;
+  public events: Event;
 
   constructor(private eventsService: EventsService) { }
 
@@ -20,15 +19,9 @@ export class EventsComponent implements OnInit {
 
   public getEventsAll(): void {
     this.eventsService.getEvents()
-      .subscribe((events: any) => {
+      .subscribe((events: Event) => {
         this.events = events;
       });
-  }
-
-  public eventById(event) {
-    this.eventsService.EventsById(event).subscribe((res: any) => {
-      this.events = res;
-    });
   }
 
 }

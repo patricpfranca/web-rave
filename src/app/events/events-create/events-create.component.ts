@@ -48,11 +48,7 @@ export class EventsCreateComponent implements OnInit {
     this.localeService.use(this.locale);
   }
 
-  ngOnInit() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.idUser = user.uid;
-    });
-  }
+  ngOnInit() {}
 
   public createEvent() {
     this.eventsService.createEvent({

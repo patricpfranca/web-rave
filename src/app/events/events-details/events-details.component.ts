@@ -12,7 +12,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 })
 export class EventsDetailsComponent implements OnInit {
 
-  public event: any;
+  public event: Event;
   faStar = faStar;
 
   constructor(
@@ -22,8 +22,8 @@ export class EventsDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.eventsService.EventsById(params._id).subscribe((eventId) => {
-        this.event = eventId;
+      this.eventsService.EventsById(params._id).subscribe((res: Event) => {
+        this.event = res;
       });
     });
   }

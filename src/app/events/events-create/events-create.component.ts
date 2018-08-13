@@ -57,7 +57,7 @@ export class EventsCreateComponent implements OnInit {
       dateEnd: this.datePipe.transform(this.form.value.dateEnd, 'yyyy-MM-dd'),
       description: this.form.value.description
     }).subscribe(() => {
-      console.log('sucess');
+      this.form.reset();
     }, (error) => {
       console.log(error);
     });

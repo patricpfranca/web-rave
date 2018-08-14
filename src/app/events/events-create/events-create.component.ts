@@ -25,6 +25,7 @@ export class EventsCreateComponent implements OnInit {
 
   public idUser: string;
   private image: any;
+  public modalRef: any;
   public form: FormGroup = new FormGroup({
     'title': new FormControl(null, [
       Validators.required, Validators.maxLength(100)
@@ -59,6 +60,7 @@ export class EventsCreateComponent implements OnInit {
       description: this.form.value.description
     }).subscribe(() => {
       this.form.reset();
+      this.modalRef.close();
     }, (error) => {
       console.log(error);
     });
@@ -79,7 +81,7 @@ export class EventsCreateComponent implements OnInit {
   }
 
   public openVerticallyCentered(content) {
-    this.modalService.open(content, { centered: true });
+    this.modalRef = this.modalService.open(content, { centered: true });
   }
 
 }

@@ -2,18 +2,23 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbDatepickerI18n, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 import { EventsService } from '../../providers/events.service';
 
 import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { listLocales } from 'ngx-bootstrap/chronos';
+import { CustomDatepickerI18n } from '../../shared/config/ng-bootstrap-datepicker-i18n';
+import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.date-parser-formatter';
 
 @Component({
   selector: 'app-events-create',
   templateUrl: './events-create.component.html',
   styleUrls: ['./events-create.component.css'],
-  providers: [ DatePipe ]
+  providers: [ DatePipe,
+    { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
+    { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX }
+  ]
 })
 export class EventsCreateComponent implements OnInit {
 
@@ -68,16 +73,6 @@ export class EventsCreateComponent implements OnInit {
 
   public imageUpload(event: Event): void {
     this.image = (<HTMLInputElement>event.target).files;
-  }
-
-  private getDismissReason(reason): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return  `with: ${reason}`;
-    }
   }
 
   public openVerticallyCentered(content) {

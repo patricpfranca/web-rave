@@ -1,70 +1,67 @@
-<div class="modal fade" id="eventscreate" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <form [formGroup]="form" (ngSubmit)="createEvent()">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Criar evento</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <h5 >Informações básicas</h5>
-          <div class="form-group">
-            <input 
-              type="text" 
-              placeholder="Nome do Evento" 
-              class="form-control"
-              formControlName="title"
-              maxlength="100"
-            >
-          </div>
-          <div class="form-row">
-            <div class="col">
-              <input 
-                type="text" 
-                placeholder="Data início" 
-                class="form-control" 
-                bsDatepicker 
-                [bsConfig]="bsConfig"
-                formControlName="dateStart"
-                maxlength="11"
-              >
-            </div>
-            <div class="col">
-              <input 
-                type="text" 
-                placeholder="Data fim" 
-                class="form-control" 
-                bsDatepicker 
-                [bsConfig]="bsConfig"
-                formControlName="dateEnd"
-                maxlength="11"
-              >
-            </div>
-          </div>
-          <div class="form-group mt-3">
-            <textarea 
-              class="form-control" 
-              placeholder="Descrição" 
-              maxlength="250" 
-              rows="3"
-              formControlName="description"
-            ></textarea>
-          </div>
-          <hr>
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Criar um evento</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="form" (ngSubmit)="createEvent()">
+    <div class="modal-body">
+      <h5 >Informações básicas</h5>
+      <div class="form-group">
+        <input 
+          type="text" 
+          placeholder="Nome do Evento" 
+          class="form-control"
+          formControlName="title"
+          maxlength="100"
+        >
+      </div>
+      <div class="form-row">
+        <div class="col">
           <input 
-            type="file"
-            class="form-control"
-            accept="image/*"
-            (change)="imageUpload($event)"
+            type="text" 
+            placeholder="Data início" 
+            class="form-control" 
+            bsDatepicker 
+            [bsConfig]="bsConfig"
+            formControlName="dateStart"
+            maxlength="11"
           >
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Cadastrar</button>
+        <div class="col">
+          <input 
+            type="text" 
+            placeholder="Data fim" 
+            class="form-control" 
+            bsDatepicker 
+            [bsConfig]="bsConfig"
+            formControlName="dateEnd"
+            maxlength="11"
+          >
         </div>
-      </form>
+      </div>
+      <div class="form-group mt-3">
+        <textarea 
+          class="form-control" 
+          placeholder="Descrição" 
+          maxlength="250" 
+          rows="3"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <hr>
+      <input 
+        type="file"
+        class="form-control"
+        accept="image/*"
+        (change)="imageUpload($event)"
+      >
     </div>
-  </div>
-</div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Fechar</button>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Cadastrar</button>
+    </div>
+  </form>
+</ng-template>
+<button class="btn btn-primary btn-sm form-rounded col-md-2" (click)="openVerticallyCentered(content)">+ Event</button>

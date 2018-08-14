@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
 import { EventsService } from '../providers/events.service';
 import { Event } from '../shared/event.model';
 
@@ -11,7 +14,9 @@ export class EventsComponent implements OnInit {
 
   public events: Event;
 
-  constructor(private eventsService: EventsService) { }
+  constructor(
+    private eventsService: EventsService
+  ) { }
 
   ngOnInit() {
     this.getEventsAll();

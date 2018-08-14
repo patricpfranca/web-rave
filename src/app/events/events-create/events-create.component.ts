@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import * as firebase from 'firebase';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { EventsService } from '../../providers/events.service';
 
@@ -38,7 +38,8 @@ export class EventsCreateComponent implements OnInit {
   constructor(
     private datePipe: DatePipe,
     private eventsService: EventsService,
-    private localeService: BsLocaleService
+    private localeService: BsLocaleService,
+    private modalService: NgbModal
   ) {
     this.bsConfig = Object.assign({}, {
       containerClass: 'theme-dark-blue',
@@ -65,6 +66,20 @@ export class EventsCreateComponent implements OnInit {
 
   public imageUpload(event: Event): void {
     this.image = (<HTMLInputElement>event.target).files;
+  }
+
+  private getDismissReason(reason): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  public openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
   }
 
 }

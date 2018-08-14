@@ -12,8 +12,7 @@ import { DescriptionReduce } from './pipes/description-reduce.pipe';
 const modules = [
   RouterModule,
   CommonModule,
-  FontAwesomeModule,
-  NgbModule
+  FontAwesomeModule
 ];
 
 const components = [
@@ -27,7 +26,8 @@ const pipes = [
 
 @NgModule({
   imports: [
-    ...modules
+    ...modules,
+    NgbModule.forRoot()
   ],
   declarations: [
     ...components,

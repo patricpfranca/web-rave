@@ -2,7 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { NgbModal, NgbDatepickerI18n, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbDatepickerI18n, NgbDateParserFormatter, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 import { EventsService } from '../../providers/events.service';
 
@@ -17,7 +17,8 @@ import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.dat
   styleUrls: ['./events-create.component.css'],
   providers: [ DatePipe,
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
-    { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX }
+    { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX },
+    {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}
   ]
 })
 export class EventsCreateComponent implements OnInit {
@@ -60,8 +61,8 @@ export class EventsCreateComponent implements OnInit {
   public createEvent() {
     this.eventsService.createEvent({
       title: this.form.value.title,
-      dateStart: this.datePipe.transform(this.form.value.dateStart, 'yyyy-MM-dd'),
-      dateEnd: this.datePipe.transform(this.form.value.dateEnd, 'yyyy-MM-dd'),
+      dateStart: this.form.value.dateStart,
+      dateEnd: this.form.value.dateEnd,
       description: this.form.value.description
     }).subscribe(() => {
       this.form.reset();

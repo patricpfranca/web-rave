@@ -24,6 +24,7 @@ export class EventsService {
   public imageUrl: string;
 
   public createEvent(event): Observable<any> {
+    console.log(event);
     return this.http.post(`${WR_API}/events`, event, { headers: this.headers });
   }
 

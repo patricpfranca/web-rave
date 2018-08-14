@@ -1,7 +1,4 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { EventsService } from '../providers/events.service';
 import { Event } from '../shared/event.model';

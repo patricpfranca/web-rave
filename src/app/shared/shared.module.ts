@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbModule, NgbDatepickerModule, NgbDateParserFormatter, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDatepickerModule, NgbDateParserFormatter, NgbDatepickerI18n, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { TitleComponent } from './components/title/title.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -16,7 +16,8 @@ const modules = [
   RouterModule,
   CommonModule,
   FontAwesomeModule,
-  NgbDatepickerModule
+  NgbDatepickerModule,
+  NgbRatingModule
 ];
 
 const components = [

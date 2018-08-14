@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
@@ -22,7 +23,7 @@ export class EventsComponent implements OnInit {
     this.getEventsAll();
   }
 
-  public getEventsAll(): void {
+  public getEventsAll() {
     this.eventsService.getEvents()
       .subscribe((events: Event) => {
         this.events = events;

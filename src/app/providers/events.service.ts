@@ -40,7 +40,7 @@ export class EventsService {
   }
 
   public getEvents(): Observable<any> {
-    return this.http.get(`${WR_API}/events`);
+    return this.http.get<any>(`${WR_API}/events`);
   }
 
 }

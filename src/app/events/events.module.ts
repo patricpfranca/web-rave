@@ -10,17 +10,11 @@ import { SharedModule } from '../shared/shared.module';
 
 import { EventsService } from '../providers/events.service';
 
-import { BsDatepickerModule } from 'ngx-bootstrap';
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { deLocale } from 'ngx-bootstrap/locale';
-defineLocale('pt-br', deLocale);
-
 @NgModule({
   imports: [
     EventsRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-    BsDatepickerModule.forRoot()
+    ReactiveFormsModule
   ],
   declarations: [
     EventsComponent,

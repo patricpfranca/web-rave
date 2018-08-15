@@ -6,8 +6,6 @@ import { NgbModal, NgbDatepickerI18n, NgbDateParserFormatter, NgbDateAdapter, Ng
 
 import { EventsService } from '../../providers/events.service';
 
-import { BsDatepickerConfig, BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { listLocales } from 'ngx-bootstrap/chronos';
 import { CustomDatepickerI18n } from '../../shared/config/ng-bootstrap-datepicker-i18n';
 import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.date-parser-formatter';
 
@@ -18,15 +16,11 @@ import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.dat
   providers: [ DatePipe,
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
     { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX },
-    {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}
+    { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }
   ]
 })
 export class EventsCreateComponent implements OnInit {
 
-  locale = 'pt-br';
-  locales = listLocales();
-
-  public bsConfig: Partial<BsDatepickerConfig>;
   data = Date.now();
 
   public idUser: string;
@@ -45,16 +39,8 @@ export class EventsCreateComponent implements OnInit {
   constructor(
     private datePipe: DatePipe,
     private eventsService: EventsService,
-    private localeService: BsLocaleService,
     private modalService: NgbModal
-  ) {
-    this.bsConfig = Object.assign({}, {
-      containerClass: 'theme-dark-blue',
-      minDate: new Date(this.data),
-      dateInputFormat: 'DD/MM/YYYY'
-    });
-    this.localeService.use(this.locale);
-  }
+  ) { }
 
   ngOnInit() {}
 

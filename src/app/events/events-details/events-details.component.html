@@ -16,66 +16,10 @@
         <div *ngFor="let rating of event.rating" >
           <div class="row">
             <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Pub:</p>
+              <p style="height: 8px;" class="text-sm-left text-capitalize">{{ rating.title }}:</p>
             </div>
             <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.pub" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Local:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.local" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Cleaning:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.cleaning" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Security:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.security" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Lineup:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.lineup" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Stall:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.stall" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Lighting:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.lighting" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <p style="height: 8px;" class="text-sm-left">Bathroom:</p>
-            </div>
-            <div class="col-md-12" style="height: 25px;">
-              <bar-rating [(rate)]="rating.bathroom" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+              <bar-rating [(rate)]="rating.value" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
             </div>
           </div>
         </div>

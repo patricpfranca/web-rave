@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-bar-rating/themes/br-stars-theme';
+
+.card {
+  border-radius: .50rem !important;
+}
+
+.form-rounded {
+  border-radius: 2rem;
+}
+
+.br {
+  position: relative;
+  margin: 0 0 15px 0 !important;
+}
+
+.br-unit, .br-selected {
+  height: 20px !important;
+  margin-left: 0 !important;
+}

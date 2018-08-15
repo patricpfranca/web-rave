@@ -12,22 +12,72 @@
   <div class="col-md-4 ml-3 card-right shadow rounded bg-white">
     <div style="height: 500px;">
       <h3 class="mt-3">Avaliações</h3>
-      <div class="card-body" *ngIf="event.rating">
+      <div class="card-body" style="padding-top: 0;" *ngIf="event.rating">
         <div *ngFor="let rating of event.rating" >
-          <div class="rating">
-            <label class="mr-2">Food:</label>
-            <span class="badge badge-info">
-              <ngb-rating [rate]="rating.food" [readonly]="true"></ngb-rating>
-            </span>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Pub:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.pub" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
           </div>
-          <ngb-rating [rate]="rating.pub" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.local" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.cleaning" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.security" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.lineup" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.stall" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.lighting" [readonly]="true"></ngb-rating>
-          <ngb-rating [rate]="rating.bathroom" [readonly]="true"></ngb-rating>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Local:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.local" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Cleaning:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.cleaning" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Security:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.security" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Lineup:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.lineup" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Stall:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.stall" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Lighting:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.lighting" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p style="height: 8px;" class="text-sm-left">Local:</p>
+            </div>
+            <div class="col-md-12" style="height: 25px;">
+              <bar-rating [(rate)]="rating.bathroom" [max]="5" [theme]="'stars'" [readOnly]="true"></bar-rating>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -12,12 +12,15 @@ import { DescriptionReduce } from './pipes/description-reduce.pipe';
 import { CustomDatepickerI18n, I18n } from './config/ng-bootstrap-datepicker-i18n';
 import { NgbDateParserFormatterEsMX } from './config/ng-bootstrap.date-parser-formatter';
 
+import { BarRatingModule } from 'ngx-bar-rating';
+
 const modules = [
   RouterModule,
   CommonModule,
   FontAwesomeModule,
   NgbDatepickerModule,
-  NgbRatingModule
+  NgbRatingModule,
+  BarRatingModule
 ];
 
 const components = [

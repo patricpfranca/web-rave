@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccessComponent } from './access/access.component';
 
 const appRoutes: Routes = [
-  { path: '', component: EventsComponent }
+  { path: '', component: AccessComponent }
 ];
 
 @NgModule({

@@ -7,8 +7,8 @@ import { EventsDetailsComponent } from './events-details/events-details.componen
 import { AuthGuard } from '../providers/auth-guard.service';
 
 const registerRoutes: Routes = [
-  { path: 'events', component: EventsComponent, data: { title: 'Eventos' } },
-  { path: 'events/:_id', component: EventsDetailsComponent, data: { title: 'Detalhes de evento' } }
+  { path: 'events', component: EventsComponent, data: { title: 'Eventos' }, canActivate: [ AuthGuard ] },
+  { path: 'events/:_id', component: EventsDetailsComponent, data: { title: 'Detalhes de evento' }, canActivate: [ AuthGuard ] }
 ];
 
 @NgModule({

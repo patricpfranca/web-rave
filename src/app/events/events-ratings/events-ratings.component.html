@@ -5,28 +5,39 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <div class="modal-body">
-    <div class="row">
-      <div class="col">
-        Pub: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Local: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Food: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
+  <form [formGroup]="ratingsForm" >
+    <div class="modal-body">
+      <div class="row" formGroupName="ratings">
+        <div class="col">
+          Pub: <bar-rating formControlName="pub" [max]="5" [theme]="'stars'"></bar-rating>
+          Local: <bar-rating formControlName="local" [max]="5" [theme]="'stars'"></bar-rating>
+          Food: <bar-rating formControlName="food" [max]="5" [theme]="'stars'"></bar-rating>
+        </div>
+        <div class="col">
+          Lineup: <bar-rating formControlName="lineup" [max]="5" [theme]="'stars'"></bar-rating>
+          Stall: <bar-rating formControlName="stall" [max]="5" [theme]="'stars'"></bar-rating>
+          Bathroom: <bar-rating formControlName="bathroom" [max]="5" [theme]="'stars'"></bar-rating>
+        </div>
+        <div class="col">
+          Lighting: <bar-rating formControlName="lighting" [max]="5" [theme]="'stars'"></bar-rating>
+          Security: <bar-rating formControlName="security" [max]="5" [theme]="'stars'"></bar-rating>
+          Cleaning: <bar-rating formControlName="cleaning" [max]="5" [theme]="'stars'"></bar-rating>
+        </div>
       </div>
-      <div class="col">
-        Lineup: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Stall: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Bathroom: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-      </div>
-      <div class="col">
-        Lighting: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Security: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-        Cleaning: <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
+      <hr>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="">Comentários</label>
+            <textarea formControlName="comment" class="form-control" rows="4"></textarea>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-  </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+    </div>
+  </form>
 </ng-template>
 
 <button class="btn btn-outline-primary" (click)="openModal(content)">Nova avaliação</button>

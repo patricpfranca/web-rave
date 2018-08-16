@@ -25,6 +25,10 @@ export class EventsRatingsComponent implements OnInit {
     this.modalService.open(content, { size: 'lg' });
   }
 
+  public ratingsCreate() {
+    return console.log(this.ratingsForm.controls);
+  }
+
   createRatingForm() {
     return this.formBuilder.group({
       ratings: this.formBuilder.group({

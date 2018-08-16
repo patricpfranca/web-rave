@@ -5,7 +5,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form [formGroup]="ratingsForm" >
+  <form [formGroup]="ratingsForm" (ngSubmit)="ratingsCreate()">
     <div class="modal-body">
       <div class="row" formGroupName="ratings">
         <div class="col">
@@ -35,6 +35,7 @@
       </div>
     </div>
     <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Enviar</button>
       <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
     </div>
   </form>

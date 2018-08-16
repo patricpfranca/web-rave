@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { EventsComponent } from './events.component';
 import { EventsDetailsComponent } from './events-details/events-details.component';
 import { EventsCreateComponent } from './events-create/events-create.component';
+import { EventsRatingsComponent } from './events-ratings/events-ratings.component';
 
 import { EventsRoutingModule } from './events.routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -19,7 +20,8 @@ import { EventsService } from '../providers/events.service';
   declarations: [
     EventsComponent,
     EventsDetailsComponent,
-    EventsCreateComponent
+    EventsCreateComponent,
+    EventsRatingsComponent
   ],
   exports: [],
   providers: [ EventsService ]

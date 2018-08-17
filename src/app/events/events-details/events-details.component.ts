@@ -1,9 +1,9 @@
-import { EventsService } from './../../providers/events.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { EventsService } from '../../providers/events.service';
 
 @Component({
   selector: 'app-events-details',

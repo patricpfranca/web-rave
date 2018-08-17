@@ -10,6 +10,7 @@ import { EventsRoutingModule } from './events.routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import { EventsService } from '../providers/events.service';
+import { RatingsService } from '../providers/ratings.service';
 
 @NgModule({
   imports: [
@@ -24,6 +25,6 @@ import { EventsService } from '../providers/events.service';
     EventsRatingsComponent
   ],
   exports: [],
-  providers: [ EventsService ]
+  providers: [ EventsService, RatingsService ]
 })
 export class EventsModule {}

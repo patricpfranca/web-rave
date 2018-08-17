@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { User } from '../shared/user.model';
+import { User } from '../shared/models/user.model';
 
 import * as firebase from 'firebase';
 

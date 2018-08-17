@@ -19,8 +19,9 @@ import { SharedModule } from './shared/shared.module';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment';
 
-import { environment } from './../environments/environment';
+
 
 @NgModule({
   declarations: [

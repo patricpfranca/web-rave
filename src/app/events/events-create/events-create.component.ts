@@ -1,4 +1,3 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -13,15 +12,13 @@ import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.dat
   selector: 'app-events-create',
   templateUrl: './events-create.component.html',
   styleUrls: ['./events-create.component.css'],
-  providers: [ DatePipe,
+  providers: [
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
     { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX },
     { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }
   ]
 })
 export class EventsCreateComponent implements OnInit {
-
-  data = Date.now();
 
   public idUser: string;
   private image: any;
@@ -37,7 +34,6 @@ export class EventsCreateComponent implements OnInit {
   });
 
   constructor(
-    private datePipe: DatePipe,
     private eventsService: EventsService,
     private modalService: NgbModal
   ) { }

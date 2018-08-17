@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -12,5 +13,6 @@ export class RatingsService {
 
   public createRatings(rating) {
     console.log(rating);
+    // return this.http.post(`${WR_API}/ratings`, rating, { headers: this.headers });
   }
 }

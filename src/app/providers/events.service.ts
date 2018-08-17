@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
 
@@ -24,7 +23,6 @@ export class EventsService {
   public imageUrl: string;
 
   public createEvent(event): Observable<any> {
-    console.log(event);
     return this.http.post(`${WR_API}/events`, event, { headers: this.headers });
   }
 

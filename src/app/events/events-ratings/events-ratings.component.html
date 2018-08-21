@@ -39,7 +39,7 @@
       <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
     </div>
   </form>
-  {{ ratingsForm }}
+  {{ ratingsForm.value | json }}
 </ng-template>
 
 <button class="btn btn-outline-primary" (click)="openModal(content)">Nova avaliação</button>

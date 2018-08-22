@@ -34,9 +34,7 @@ export class EventsRatingsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.idEvent = params._id;
-    });
+    this.idEvent = this.route.snapshot.params._id;
   }
 
   openModal(content) {
@@ -44,7 +42,9 @@ export class EventsRatingsComponent implements OnInit {
   }
 
   public ratingsCreate() {
-    this.ratingsService.createRatings(this.ratingsForm.getRawValue());
+    const body = this.ratingsForm.getRawValue();
+    body._idEvent = this.idEvent;
+    this.ratingsService.createRatings(body);
   }
 
 }

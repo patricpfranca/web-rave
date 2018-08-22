@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { RatingsService } from '../../providers/ratings.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-events-ratings',
@@ -24,14 +25,18 @@ export class EventsRatingsComponent implements OnInit {
     }),
     comment: new FormControl(null)
   });
+  public idEvent = '';
 
   constructor(
     private modalService: NgbModal,
-    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private ratingsService: RatingsService
   ) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params) => {
+      this.idEvent = params._id;
+    });
   }
 
   openModal(content) {
@@ -39,7 +44,7 @@ export class EventsRatingsComponent implements OnInit {
   }
 
   public ratingsCreate() {
-    console.log(this.ratingsForm.getRawValue());
+    this.ratingsService.createRatings(this.ratingsForm.getRawValue());
   }
 
 }

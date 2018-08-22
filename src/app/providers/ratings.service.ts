@@ -12,7 +12,6 @@ export class RatingsService {
   constructor(private http: HttpClient) { }
 
   public createRatings(rating) {
-    console.log(rating);
-    // return this.http.post(`${WR_API}/ratings`, rating, { headers: this.headers });
+    return this.http.post(`${WR_API}/ratings`, rating, { headers: this.headers });
   }
 }

@@ -42,9 +42,14 @@ export class EventsRatingsComponent implements OnInit {
   }
 
   public ratingsCreate() {
-    const body = this.ratingsForm.getRawValue();
+    const body = this.ratingsForm.value;
     body._eventId = this.idEvent;
-    this.ratingsService.createRatings(body);
+    console.log(body);
+    this.ratingsService.createRatings(body).subscribe((res) => {
+      console.log('sucesso', res);
+    }, (error) => {
+      console.log('falha');
+    });
   }
 
 }

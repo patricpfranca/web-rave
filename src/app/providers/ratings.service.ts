@@ -11,8 +11,8 @@ export class RatingsService {
 
   constructor(private http: HttpClient) { }
 
-  public createRatings(rating) {
-    console.log(JSON.stringify(rating));
-    this.http.post(`${WR_API}/ratings`, JSON.stringify(rating), { headers: this.headers });
+  public createRatings(rating): Observable<any> {
+    console.log(`${WR_API}/ratings`);
+    return this.http.post(`${WR_API}/ratings`, rating, { headers: this.headers });
   }
 }

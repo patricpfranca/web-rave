@@ -43,7 +43,7 @@ export class EventsRatingsComponent implements OnInit {
 
   public ratingsCreate() {
     const body = this.ratingsForm.getRawValue();
-    body._idEvent = this.idEvent;
+    body._eventId = this.idEvent;
     this.ratingsService.createRatings(body);
   }
 

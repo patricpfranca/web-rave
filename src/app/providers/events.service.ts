@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireStorage } from 'angularfire2/storage';
 
-import { Event } from '../shared/models/event.model';
+import { Event } from '../shared/models/event.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { WR_API } from '../app.api';
 

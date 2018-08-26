@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { EventsService } from '../providers/events.service';
-import { Event } from '../shared/models/event.model';
+import { Event } from '../shared/models/event.interface';
 
 @Component({
   selector: 'app-events',
@@ -10,7 +10,7 @@ import { Event } from '../shared/models/event.model';
 })
 export class EventsComponent implements OnInit {
 
-  public events: Event;
+  public events: Event[];
 
   constructor(
     private eventsService: EventsService
@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
 
   public getEventsAll() {
     this.eventsService.getEvents()
-      .subscribe((events: Event) => {
+      .subscribe((events: Event[]) => {
         this.events = events;
       });
   }

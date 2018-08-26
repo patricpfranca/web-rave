@@ -13,15 +13,15 @@ export class EventsRatingsComponent implements OnInit {
 
   public ratingsForm = new FormGroup({
     ratings: new FormGroup({
-      pub: new FormControl(null),
-      local: new FormControl(null),
-      food: new FormControl(null),
-      lineup: new FormControl(null),
-      stall: new FormControl(null),
-      lighting: new FormControl(null),
-      bathroom: new FormControl(null),
-      security: new FormControl(null),
-      cleaning: new FormControl(null)
+      pub: new FormControl(0),
+      local: new FormControl(0),
+      food: new FormControl(0),
+      lineup: new FormControl(0),
+      stall: new FormControl(0),
+      lighting: new FormControl(0),
+      bathroom: new FormControl(0),
+      security: new FormControl(0),
+      cleaning: new FormControl(0)
     }),
     comment: new FormControl(null)
   });

@@ -22,8 +22,8 @@ export class EventsService {
 
   public imageUrl: string;
 
-  public createEvent(event): Observable<any> {
-    return this.http.post(`${WR_API}/events`, event, { headers: this.headers });
+  public createEvent(event: Event): Observable<Event> {
+    return this.http.post<Event>(`${WR_API}/events`, event, { headers: this.headers });
   }
 
   public updateEvent(event: any, key: string) {
@@ -38,8 +38,8 @@ export class EventsService {
     return this.http.get(`${WR_API}/events/${id}`);
   }
 
-  public getEvents(): Observable<any> {
-    return this.http.get<any>(`${WR_API}/events`);
+  public getEvents(): Observable<Event[]> {
+    return this.http.get<Event[]>(`${WR_API}/events`);
   }
 
 }

@@ -5,7 +5,7 @@
       <div class="card-body">
         <h3>{{ event.title }}</h3>
         <small>Evento realizado em {{ event.dateStart | date: 'dd MMM yyyy' }}</small>
-        <p class="text-justify mt-3">{{ event.description }}</p>
+        <p class="text-justify mt-3">{{ event.description | descriptionReduce:350 }}</p>
       </div>
     </div>
   </div>

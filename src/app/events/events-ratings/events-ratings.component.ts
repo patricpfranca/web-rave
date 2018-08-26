@@ -44,7 +44,6 @@ export class EventsRatingsComponent implements OnInit {
   public ratingsCreate() {
     const body = this.ratingsForm.value;
     body._eventId = this.idEvent;
-    console.log(body);
     this.ratingsService.createRatings(body).subscribe((res) => {
       console.log('sucesso', res);
     }, (error) => {

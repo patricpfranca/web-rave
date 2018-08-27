@@ -5,6 +5,7 @@ import { EventsComponent } from './events.component';
 import { EventsDetailsComponent } from './events-details/events-details.component';
 import { EventsCreateComponent } from './events-create/events-create.component';
 import { EventsRatingsComponent } from './events-ratings/events-ratings.component';
+import { EventsCommentComponent } from './events-comment/events-comment.component';
 
 import { EventsRoutingModule } from './events.routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -22,7 +23,8 @@ import { RatingsService } from '../providers/ratings.service';
     EventsComponent,
     EventsDetailsComponent,
     EventsCreateComponent,
-    EventsRatingsComponent
+    EventsRatingsComponent,
+    EventsCommentComponent
   ],
   exports: [],
   providers: [ EventsService, RatingsService ]

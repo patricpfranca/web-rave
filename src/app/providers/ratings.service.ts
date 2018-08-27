@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { WR_API } from '../app.api';
+import { Rating } from '../shared/models/rating.interface';
 
 @Injectable()
 export class RatingsService {
@@ -11,8 +12,11 @@ export class RatingsService {
 
   constructor(private http: HttpClient) { }
 
-  public createRatings(rating): Observable<any> {
-    console.log(`${WR_API}/ratings`);
-    return this.http.post(`${WR_API}/ratings`, rating, { headers: this.headers });
+  public createRatings(rating: Rating): Observable<Rating> {
+    return this.http.post<Rating>(`${WR_API}/ratings`, rating, { headers: this.headers });
+  }
+
+  public findCommentsRating(_idEvent: string) {
+    return this.http.get<Rating[]>(`${WR_API}/ratings/${_idEvent}/comments`);
   }
 }

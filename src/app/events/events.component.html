@@ -1,6 +1,6 @@
 <app-title></app-title>
 <app-events-create></app-events-create>
-<div class="mt-1 bg-white shadow rounded">
+<!-- <div class="mt-1 bg-white shadow rounded">
   <div class="card-body">
     <div class="row">
       <div class="card mr-2 mb-2" style="width: 18rem;" *ngFor="let event of events">
@@ -15,4 +15,89 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+<section class="row mt-3 flex-wrap">
+  <div class="col-md-4" *ngFor="let event of events">
+    <div class="card-flip shadow-lg" (click)="flipCard()" #card>
+      <div class="front">
+        <div class="card">
+          <div class="date">
+            <span class="day">{{ event.dateStart | date: 'dd' }}</span>
+            <span class="month">{{ event.dateStart | date: 'MMM' }}</span>
+            <span class="year">{{ event.dateStart | date: 'yyyy' }}</span>
+          </div>
+          <img class="card-img-top" src="https://alieningressos.com/loja/img/evento/capa_203.jpg">
+          <div class="card-body">
+            <h5 class="card-title">{{ event.title }}</h5>
+            <p class="card-text">{{ event.description | descriptionReduce:150 }}</p>
+            <p class="card-text"><small class="text-muted">Clique e visualize mais detalhes</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="card" style="width: 100%;">
+          <div class="card-body">
+            <div class="row">
+              <label>Data Inicio:</label> {{ event.dateStart | date: 'dd MMM yyyy' }}
+            </div>
+            <div class="row">
+              <label>Data Fim:</label> {{ event.dateEnd | date: 'dd MMM yyyy' }}
+            </div>
+            <div class="row">
+              <label>Organizador:</label>
+            </div>
+          </div>
+          <a [routerLink]="['/events', event._id]" class="btn btn-primary btn-sm form-rounded">+ Detalhes</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<style>
+.front, .back {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+.card-flip {
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+}
+.date {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: #77d7b9;
+  color: #fff;
+  padding: 0.4em;
+}
+.date span {
+  display: block;
+  text-align: center;
+}
+.date .day {
+  font-weight: 700;
+  font-size: 17px;
+  text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.18);
+}
+.date .month {
+  text-transform: uppercase;
+}
+.date .month,
+.date .year {
+  font-size: 10px;
+}
+</style>

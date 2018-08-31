@@ -21,17 +21,26 @@
       <div class="back">
         <div class="card" style="width: 100%;">
           <div class="card-body">
-            <div class="row">
-              <label>Data Inicio:</label> {{ event.dateStart | date: 'dd MMM yyyy' }}
-            </div>
-            <div class="row">
-              <label>Data Fim:</label> {{ event.dateEnd | date: 'dd MMM yyyy' }}
-            </div>
-            <div class="row">
-              <label>Organizador:</label> {{ event.organizer?.name }}
+            <div class="container">
+              <div class="row">
+                <label class="font-weight-bold">Data Inicio:&nbsp;</label>
+                <p class="font-weight-normal" style="margin-bottom: 0;">{{ event.dateStart | date: 'dd, MMMM yyyy' }}</p>
+              </div>
+              <div class="row">
+                <label class="font-weight-bold">Data Fim:&nbsp;</label>
+                <p class="font-weight-normal">{{ event.dateEnd | date: 'dd, MMMM yyyy' }}</p>
+              </div>
+              <div class="row">
+                <label class="font-weight-bold">Organizador:&nbsp;</label>
+                <p class="font-weight-normal">{{ event.organizer?.name }}</p>
+              </div>
+              <div class="row">
+                <label class="font-weight-bold">Redes sociais:</label><br>
+
+              </div>
             </div>
           </div>
-          <a [routerLink]="['/events', event._id]" class="btn btn-primary btn-sm form-rounded">+ Detalhes</a>
+          <a [routerLink]="['/events', event._id]" class="btn btn-primary btn-sm form-rounded" style="cursor: default;">+ Detalhes</a>
         </div>
       </div>
     </div>

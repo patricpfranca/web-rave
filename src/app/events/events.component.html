@@ -1,8 +1,8 @@
 <app-title></app-title>
 <app-events-create></app-events-create>
 <section class="row mt-3 flex-wrap">
-  <div class="col-md-4" *ngFor="let event of events">
-    <div class="card card-flip shadow-lg" id="{{event._id}}" (click)="flipCard()" #card>
+  <div class="col-md-4" *ngFor="let event of events; let i = index">
+    <div class="card card-flip shadow-lg" (click)="flipCard(i)" #card>
       <div class="front">
         <div class="card">
           <div class="date">
@@ -28,7 +28,7 @@
               <label>Data Fim:</label> {{ event.dateEnd | date: 'dd MMM yyyy' }}
             </div>
             <div class="row">
-              <label>Organizador:</label> {{ event.organizer.name }}
+              <label>Organizador:</label> {{ event.organizer?.name }}
             </div>
           </div>
           <a [routerLink]="['/events', event._id]" class="btn btn-primary btn-sm form-rounded">+ Detalhes</a>

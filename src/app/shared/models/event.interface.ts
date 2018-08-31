@@ -3,4 +3,12 @@ export interface Event {
   dateStart: any;
   dateEnd: any;
   description: string;
+  organizer: {
+    name: string;
+    email: string;
+    social: {
+      facebook: string;
+      instagram: string;
+    }
+  };
 }

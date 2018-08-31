@@ -23,14 +23,19 @@ export class EventsCreateComponent implements OnInit {
   public idUser: string;
   private image: any;
   public modalRef: any;
-  public form: FormGroup = new FormGroup({
-    'title': new FormControl(null, [
-      Validators.required, Validators.maxLength(100)
-    ]), 'dateStart': new FormControl(null, [
-      Validators.required, Validators.maxLength(11)
-    ]), 'dateEnd': new FormControl(null, [
-      Validators.required, Validators.maxLength(11)
-    ]), 'description': new FormControl(null)
+  public form = new FormGroup({
+    title: new FormControl(null, [Validators.required, Validators.maxLength(100)]),
+    dateStart: new FormControl(null, [Validators.required, Validators.maxLength(11)]),
+    dateEnd: new FormControl(null, [Validators.required, Validators.maxLength(11)]),
+    description: new FormControl(null),
+    organizer: new FormGroup({
+      name: new FormControl(null),
+      email: new FormControl(null),
+      social: new FormGroup({
+        facebook: new FormControl(null),
+        instagram: new FormControl(null)
+      })
+    })
   });
 
   constructor(
@@ -41,12 +46,8 @@ export class EventsCreateComponent implements OnInit {
   ngOnInit() {}
 
   public createEvent() {
-    this.eventsService.createEvent({
-      title: this.form.value.title,
-      dateStart: this.form.value.dateStart,
-      dateEnd: this.form.value.dateEnd,
-      description: this.form.value.description
-    }).subscribe(() => {
+    const body = this.form.value;
+    this.eventsService.createEvent(body).subscribe(() => {
       this.form.reset();
       this.modalRef.close();
     }, (error) => {

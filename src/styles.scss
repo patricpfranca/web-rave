@@ -1,5 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-bar-rating/themes/br-stars-theme';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body, html {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
 
 .card {
   border-radius: .50rem !important;

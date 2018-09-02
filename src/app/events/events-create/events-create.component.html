@@ -7,39 +7,82 @@
   </div>
   <form [formGroup]="form" (ngSubmit)="createEvent()">
     <div class="modal-body">
-      <h5 >Informações básicas</h5>
-      <div class="form-group">
-        <input 
-          type="text" 
-          placeholder="Nome do Evento" 
-          class="form-control"
-          formControlName="title"
-          maxlength="100"
-        >
-      </div>
-      <div class="form-row">
-        <div class="col">
-          <input class="form-control" placeholder="Data início" (click)="s.toggle()" formControlName="dateStart" ngbDatepicker #s="ngbDatepicker">
-        </div>
-        <div class="col">
-          <input class="form-control" placeholder="Data fim" (click)="e.toggle()" formControlName="dateEnd" ngbDatepicker #e="ngbDatepicker">
-        </div>
-      </div>
-      <div class="form-group mt-3">
-        <textarea 
-          class="form-control" 
-          placeholder="Descrição"
-          rows="3"
-          formControlName="description"
-        ></textarea>
-      </div>
-      <hr>
-      <input 
-        type="file"
-        class="form-control"
-        accept="image/*"
-        (change)="imageUpload($event)"
-      >
+      <ngb-tabset>
+        <ngb-tab title="Information basics">
+          <ng-template ngbTabContent>
+            <div class="form-group mt-2">
+              <input 
+                type="text" 
+                placeholder="Nome do Evento" 
+                class="form-control"
+                formControlName="title"
+                maxlength="250"
+              >
+            </div>
+            <div class="form-row">
+              <div class="col">
+                <input class="form-control" placeholder="Data início" (click)="s.toggle()" formControlName="dateStart" ngbDatepicker #s="ngbDatepicker">
+              </div>
+              <div class="col">
+                <input class="form-control" placeholder="Data fim" (click)="e.toggle()" formControlName="dateEnd" ngbDatepicker #e="ngbDatepicker">
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <textarea 
+                class="form-control" 
+                placeholder="Descrição"
+                rows="3"
+                formControlName="description"
+              ></textarea>
+            </div>
+            <input 
+              type="file"
+              class="form-control"
+              accept="image/*"
+              (change)="imageUpload($event)">
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Organizer">
+          <ng-template ngbTabContent>
+            <div formGroupName="organizer">
+              <div class="form-group mt-2">
+                <input 
+                  type="text" 
+                  placeholder="Nome organizador/crew" 
+                  class="form-control"
+                  formControlName="name">
+              </div>
+              <div class="form-group mt-3">
+                <input
+                  type="text"
+                  class="form-control" 
+                  placeholder="Email"
+                  formControlName="email">
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Social network">
+          <ng-template ngbTabContent>
+            <div formGroupName="socials">
+              <div class="form-group mt-2">
+                <input 
+                  type="text"
+                  placeholder="Evento facebook"
+                  class="form-control"
+                  formControlName="facebook">
+              </div>
+              <div class="form-group mt-3">
+                <input 
+                  type="text"
+                  placeholder="Instagram"
+                  class="form-control"
+                  formControlName="instagram">
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-light" (click)="c('Close click')">Fechar</button>

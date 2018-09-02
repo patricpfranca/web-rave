@@ -30,11 +30,11 @@ export class EventsCreateComponent implements OnInit {
     description: new FormControl(null),
     organizer: new FormGroup({
       name: new FormControl(null),
-      email: new FormControl(null),
-      social: new FormGroup({
-        facebook: new FormControl(null),
-        instagram: new FormControl(null)
-      })
+      email: new FormControl(null)
+    }),
+    social: new FormGroup({
+      facebook: new FormControl(null),
+      instagram: new FormControl(null)
     })
   });
 

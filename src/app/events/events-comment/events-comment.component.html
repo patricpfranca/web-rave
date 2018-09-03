@@ -1,13 +1,28 @@
-<div *ngFor="let comment of comments">
-  <div class="header-comment">
-    <img src="https://agarreeuse.com/wp-content/uploads/2017/11/Bob-Esponja-100x100.jpg" style="width: 50px; height: 50px;" class="rounded-circle">
-    João Maria <br>
-    <bar-rating [max]="5" [theme]="'stars'"></bar-rating>
-  </div>
-
-  <div class="card">
-    <i>
-      {{ comment.comment }}
-    </i>
+<div class="container">
+  <div *ngFor="let comment of comments">
+    <div class="card col-md-11 float-right">
+      <div class="card-body">
+        <div class="header-comment">
+          <img class="img-comment rounded-circle" src="https://agarreeuse.com/wp-content/uploads/2017/11/Bob-Esponja-100x100.jpg" style="width: 50px; height: 50px;">
+        </div>
+        <div class="title-comment">
+          <h5 class="card-title">João Maria</h5>
+        </div>
+        <div class="comment">
+          <p>{{ comment.comment }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+<style>
+.img-comment {
+  margin-left: -80px;
+  margin-top: -18px;
+}
+
+.title-comment {
+  margin-top: -60px;
+}
+</style>

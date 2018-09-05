@@ -1,4 +1,4 @@
-<div class="row mt-3" *ngIf="event">
+<!-- <div class="row mt-3" *ngIf="event">
   <div class="col card-center shadow rounded bg-white">
     <div style="height: 500px;">
       <img class="card-img-top" src="../../../assets/31899362_847150278821827_217464210060214272_n.jpg" style="height: 250px;">
@@ -34,4 +34,63 @@
       <app-events-comment></app-events-comment>
     </div>
   </div>
+</div> -->
+<div class="row mt-5">
+  <div class="col-md-12 card shadow">
+    <div class="row">
+      <div class="col-md-8 col-img-event">
+        <img class="card-img-top img-event" src="../../../assets/31899362_847150278821827_217464210060214272_n.jpg">
+      </div>
+      <div class="col-md-4">
+        <div class="date">
+          <span class="day">{{ event.dateStart | date: 'dd' }}</span>
+          <span class="month">{{ event.dateStart | date: 'MMM' }}</span>
+          <span class="year">{{ event.dateStart | date: 'yyyy' }}</span>
+        </div>
+        
+        <h4 class="top-title text-center">{{ event.title }}</h4>
+        <h5 class="text-muted text-center mt-5">organizado por {{ event.organizer?.name }}</h5>
+      </div>
+    </div>
+    <div class="card-body mt-5">
+    </div>
+  </div>
 </div>
+
+
+<style>
+.top-title {
+  margin-top: 70px;
+}
+.img-event {
+  margin-left: -1px;
+  height: 320px;
+}
+.col-img-event {
+  margin-left: -15px;
+}
+.date {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  background-color: #77d7b9;
+  color: #fff;
+  padding: 0.4em;
+}
+.date span {
+  display: block;
+  text-align: center;
+}
+.date .day {
+  font-weight: 700;
+  font-size: 17px;
+  text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.18);
+}
+.date .month {
+  text-transform: uppercase;
+}
+.date .month,
+.date .year {
+  font-size: 10px;
+}
+</style>

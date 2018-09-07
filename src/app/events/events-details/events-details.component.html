@@ -52,19 +52,103 @@
         <h5 class="text-muted text-center mt-5">organizado por {{ event.organizer?.name }}</h5>
       </div>
     </div>
-    <div class="card-body mt-5">
+    <div class="row border-top border-bottom">
+      <div class="container">
+        <ul class="social-icons icon-circle icon-zoom list-unstyled list-inline mt-2">
+          <li>Sigam nas redes sociais: </li>
+          <li><i class="fab fa-facebook-square" alt="Evento"></i></li>
+          <li><i class="fab fa-instagram" alt="Instagram"></i></li>
+        </ul>
+      </div>
+    </div>
+    <div class="card-body mt-3">
+      <div class="container">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <div class="row text-uppercase font-weight-bold mb-3">descrição</div>
+            <p class="row font-weight-light">{{ event.description }}</p>
+          </div>
+          <div class="col-md-5 offset-md-1">
+            <div class="row text-uppercase font-weight-bold mb-3">data</div>
+            <p class="row font-weight-light mb-5">{{ event.dateStart | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }} - {{ event.dateEnd | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }}</p>
+            <div class="row text-uppercase font-weight-bold mb-3">local</div>
+            <p class="row font-weight-light"></p>
+          </div>
+        </div>
+      </div>
+      <hr style="width: 103%; margin-left: -15px;">
+      <div class="container">
+        <div class="row">
+          <div class="container">
+            <div class="row text-uppercase font-weight-bold mb-3">comentários</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="container">
+            <app-events-comment></app-events-comment>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 
 <style>
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+}
+.list-inline li {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+.social-icons .fa-instagram{background-color:#A1755C;}
+.social-icons .fa-facebook,.social-icons .fa-facebook-square{background-color:#3C599F;}
+.social-icons.icon-zoom .fa:hover, .social-icons.icon-zoom .fa:active { 
+ 	-webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1); 
+}
+.social-icons .fab {
+	width: 30px;
+	height: 30px;
+	line-height: 31px;
+	text-align: center;
+	color: #FFF;
+	color: rgba(255, 255, 255, 0.8);
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.social-icons.icon-circle .fab{ 
+	border-radius: 50%;
+}
+.social-icons.icon-rounded .fab{
+	border-radius:5px;
+}
+.social-icons.icon-flat .fab{
+	border-radius: 0;
+}
+
+.social-icons .fab:hover, .social-icons .fab:active {
+	color: #FFF;
+	-webkit-box-shadow: 1px 1px 3px #333;
+	-moz-box-shadow: 1px 1px 3px #333;
+	box-shadow: 1px 1px 3px #333; 
+}
 .top-title {
   margin-top: 70px;
 }
 .img-event {
   margin-left: -1px;
-  height: 320px;
+  height: 300px;
 }
 .col-img-event {
   margin-left: -15px;

@@ -1,4 +1,4 @@
-<div class="col-md-11">
+<div class="col-md-11" *ngIf="comments.length; else notcomment">
   <ul>
     <li class="row" *ngFor="let comment of comments">
       <div class="img-comment">
@@ -20,7 +20,9 @@
     </li>
   </ul>
 </div>
-
+<ng-template #notcomment>
+  <h6 class="text-center">Não encontrado nenhum comentário</h6>
+</ng-template>
 
 <style>
 .comment-time {

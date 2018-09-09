@@ -1,28 +1,61 @@
-<div class="container">
-  <div *ngFor="let comment of comments">
-    <div class="card col-md-11 float-right">
-      <div class="card-body">
-        <div class="header-comment">
-          <img class="img-comment rounded-circle" src="https://agarreeuse.com/wp-content/uploads/2017/11/Bob-Esponja-100x100.jpg" style="width: 50px; height: 50px;">
+<div class="col-md-11">
+  <ul>
+    <li class="row" *ngFor="let comment of comments">
+      <div class="img-comment">
+        <img class="img-thumbnail shadow-sm" src="http://i9.photobucket.com/albums/a88/creaticode/avatar_1_zps8e1c80cd.jpg" alt="">
+      </div>
+      <div class="card comment-list comment-box">
+        <div class="card-header">
+          <div class="row">
+            <div class="col-md-10">
+              <span>Agustin Ortiz</span>
+              <span class="comment-time">hace 20 minutos</span>
+            </div>
+          </div>
         </div>
-        <div class="title-comment">
-          <h5 class="card-title">João Maria</h5>
-        </div>
-        <div class="comment">
-          <p>{{ comment.comment }}</p>
+        <div class="card-body">
+          <p class="font-weight-light">{{ comment.comment }}</p>
         </div>
       </div>
-    </div>
-  </div>
+    </li>
+  </ul>
 </div>
 
-<style>
-.img-comment {
-  margin-left: -80px;
-  margin-top: -18px;
-}
 
-.title-comment {
-  margin-top: -60px;
+<style>
+.comment-time {
+	color: #999;
+	font-size: 13px;
+	position: relative;
+	top: 1px;
+  margin-left: 10px;
+}
+.comment-box:before, .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #f7f7f7;
+	top: 9px;
+	left: -11px;
+}
+.comment-box:before {
+	border-width: 10px 13px 10px 0;
+	border-color: transparent rgba(0,0,0,.125);
+	left: -13px;
+}
+.img-comment {
+  position: relative;
+  z-index: 3;
+  width: 50px;
+  height: 50px;
+  margin: 0px;
+}
+.comment-list {
+  left: 70px;
+  top: -50px;
 }
 </style>

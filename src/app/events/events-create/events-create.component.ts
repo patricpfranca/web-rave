@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { } from '@types/googlemaps';
+import { MapsAPILoader } from '@agm/core';
 
 import {
   NgbModal,
@@ -43,13 +45,65 @@ export class EventsCreateComponent implements OnInit {
       instagram: new FormControl(null)
     })
   });
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
+
+  @ViewChild('search') public searchElementRef: ElementRef;
 
   constructor(
     private eventsService: EventsService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // set google maps defaults
+    this.zoom = 10;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
+
+    // create search FormControl
+    this.searchControl = new FormControl();
+
+    // set current position
+    this.setCurrentPosition();
+
+    // load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ['address']
+      });
+      autocomplete.addListener('place_changed', () => {
+        this.ngZone.run(() => {
+          // get the place result
+          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          // verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          // set latitude, longitude and zoom
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          this.zoom = 12;
+        });
+      });
+    });
+  }
+
+  private setCurrentPosition() {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
 
   public createEvent() {
     const body = this.form.value;
@@ -66,8 +120,8 @@ export class EventsCreateComponent implements OnInit {
     this.image = (<HTMLInputElement>event.target).files;
   }
 
-  public openVerticallyCentered(content) {
-    this.modalRef = this.modalService.open(content, { centered: true });
+  open(content) {
+    this.modalService.open(content, { size: 'lg' });
   }
 
 }

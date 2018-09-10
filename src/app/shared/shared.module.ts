@@ -13,6 +13,7 @@ import { CustomDatepickerI18n, I18n } from './config/ng-bootstrap-datepicker-i18
 import { NgbDateParserFormatterEsMX } from './config/ng-bootstrap.date-parser-formatter';
 
 import { BarRatingModule } from 'ngx-bar-rating';
+import { AgmCoreModule } from '@agm/core';
 
 const modules = [
   RouterModule,
@@ -20,7 +21,8 @@ const modules = [
   FontAwesomeModule,
   NgbDatepickerModule,
   BarRatingModule,
-  NgbTabsetModule
+  NgbTabsetModule,
+  AgmCoreModule
 ];
 
 const components = [

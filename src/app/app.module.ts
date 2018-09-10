@@ -20,8 +20,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
-
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -40,7 +39,11 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.FirebaseConfig),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBXKTtWAOoRvqXflD6DKTUXvxBBt4LZnDo',
+      libraries: ['places']
+    })
   ],
   providers: [ Authentication, AuthGuard ],
   bootstrap: [AppComponent]

@@ -82,6 +82,16 @@
             </div>
           </ng-template>
         </ngb-tab>
+        <ngb-tab title="Maps">
+          <ng-template ngbTabContent>
+            <div class="form-group">
+              <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+            </div>
+            <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+              <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+            </agm-map>
+          </ng-template>
+        </ngb-tab>
       </ngb-tabset>
     </div>
     <div class="modal-footer">
@@ -90,4 +100,10 @@
     </div>
   </form>
 </ng-template>
-<button class="btn btn-primary btn-sm form-rounded col-md-2" (click)="openVerticallyCentered(content)">+ Event</button>
+<button class="btn btn-primary btn-sm form-rounded col-md-2" (click)="open(content)">+ Event</button>
+
+<style>
+agm-map {
+  height: 300px;
+}
+</style>

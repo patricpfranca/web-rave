@@ -43,6 +43,10 @@ export class EventsRatingsComponent implements OnInit {
 
   public ratingsCreate() {
     const body = this.ratingsForm.value;
+    const rating = body.ratings;
+    const media = (rating.pub + rating.local + rating.food + rating.lineup + rating.stall
+      + rating.bathroom + rating.lighting + rating.security + rating.cleaning) / 9;
+    body.media = Math.round(media);
     body._eventId = this.idEvent;
     this.ratingsService.createRatings(body).subscribe((res) => {
       this.ratingsForm.reset();

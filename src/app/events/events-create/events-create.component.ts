@@ -121,7 +121,7 @@ export class EventsCreateComponent implements OnInit {
   }
 
   open(content) {
-    this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
 
 }

@@ -41,7 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     AngularFireStorageModule,
     HttpClientModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBXKTtWAOoRvqXflD6DKTUXvxBBt4LZnDo',
+      apiKey: environment.AGM_CORE_KEY,
       libraries: ['places']
     })
   ],

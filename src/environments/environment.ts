@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: 'web-rave.appspot.com',
     messagingSenderId: '907667834095'
   },
-  API: 'http://localhost:3000'
+  API: 'http://localhost:3000',
+  AGM_CORE_KEY: 'AIzaSyBXKTtWAOoRvqXflD6DKTUXvxBBt4LZnDo';
 };
 
 /*

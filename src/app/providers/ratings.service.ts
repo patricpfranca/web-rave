@@ -2,8 +2,8 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { WR_API } from '../app.api';
 import { Rating } from '../shared/models/rating.interface';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class RatingsService {
@@ -13,10 +13,10 @@ export class RatingsService {
   constructor(private http: HttpClient) { }
 
   public createRatings(rating: Rating): Observable<Rating> {
-    return this.http.post<Rating>(`${WR_API}/ratings`, rating, { headers: this.headers });
+    return this.http.post<Rating>(`${environment.API}/ratings`, rating, { headers: this.headers });
   }
 
   public findCommentsRating(_idEvent: string) {
-    return this.http.get<Rating[]>(`${WR_API}/ratings/${_idEvent}/comments`);
+    return this.http.get<Rating[]>(`${environment.API}/ratings/${_idEvent}/comments`);
   }
 }

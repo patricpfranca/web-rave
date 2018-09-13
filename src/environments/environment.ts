@@ -11,7 +11,8 @@ export const environment = {
     projectId: 'web-rave',
     storageBucket: 'web-rave.appspot.com',
     messagingSenderId: '907667834095'
-  }
+  },
+  API: 'http://localhost:3000'
 };
 
 /*

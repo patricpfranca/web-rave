@@ -35,7 +35,8 @@ export class EventsService {
 
 
   public createEvent(event: Event): Observable<Event> {
-    this.uploadImage(event.imagePath);
+    // this.uploadImage(event.imagePath);
+    console.log(event);
     return this.http.post<Event>(`${environment.API}/events`, event, { headers: this.headers });
   }
 

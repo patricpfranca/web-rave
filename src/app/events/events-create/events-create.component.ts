@@ -29,7 +29,6 @@ import { NgbDateParserFormatterEsMX } from '../../shared/config/ng-bootstrap.dat
 export class EventsCreateComponent implements OnInit {
 
   public idUser: string;
-  private image: any;
   public modalRef: any;
   public form = new FormGroup({
     title: new FormControl(null, [Validators.required, Validators.maxLength(250)]),
@@ -43,12 +42,14 @@ export class EventsCreateComponent implements OnInit {
     socials: new FormGroup({
       facebook: new FormControl(null),
       instagram: new FormControl(null)
-    })
+    }),
+    imagePath: new FormControl(null)
   });
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public zoom: number;
+  public image: FileList;
 
   @ViewChild('search') public searchElementRef: ElementRef;
 
@@ -60,39 +61,39 @@ export class EventsCreateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // set google maps defaults
-    this.zoom = 10;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    // // set google maps defaults
+    // this.zoom = 10;
+    // this.latitude = 39.8282;
+    // this.longitude = -98.5795;
 
-    // create search FormControl
-    this.searchControl = new FormControl();
+    // // create search FormControl
+    // this.searchControl = new FormControl();
 
-    // set current position
-    this.setCurrentPosition();
+    // // set current position
+    // this.setCurrentPosition();
 
-    // load Places Autocomplete
-    this.mapsAPILoader.load().then(() => {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ['address']
-      });
-      autocomplete.addListener('place_changed', () => {
-        this.ngZone.run(() => {
-          // get the place result
-          const place: google.maps.places.PlaceResult = autocomplete.getPlace();
+    // // load Places Autocomplete
+    // this.mapsAPILoader.load().then(() => {
+    //   const autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+    //     types: ['address']
+    //   });
+    //   autocomplete.addListener('place_changed', () => {
+    //     this.ngZone.run(() => {
+    //       // get the place result
+    //       const place: google.maps.places.PlaceResult = autocomplete.getPlace();
 
-          // verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
+    //       // verify result
+    //       if (place.geometry === undefined || place.geometry === null) {
+    //         return;
+    //       }
 
-          // set latitude, longitude and zoom
-          this.latitude = place.geometry.location.lat();
-          this.longitude = place.geometry.location.lng();
-          this.zoom = 12;
-        });
-      });
-    });
+    //       // set latitude, longitude and zoom
+    //       this.latitude = place.geometry.location.lat();
+    //       this.longitude = place.geometry.location.lng();
+    //       this.zoom = 12;
+    //     });
+    //   });
+    // });
   }
 
   private setCurrentPosition() {
@@ -106,8 +107,9 @@ export class EventsCreateComponent implements OnInit {
   }
 
   public createEvent() {
+    const file = this.image.item(0);
     const body = this.form.value;
-    console.log(body);
+    body.imagePath = file;
     this.eventsService.createEvent(body).subscribe(() => {
       this.form.reset();
       this.modalRef.close();

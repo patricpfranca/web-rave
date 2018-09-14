@@ -39,7 +39,8 @@
               type="file"
               class="form-control"
               accept="image/*"
-              (change)="imageUpload($event)">
+              (change)="imageUpload($event)"
+              formControlName="imagePath">
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Organizer">
@@ -84,12 +85,12 @@
         </ngb-tab>
         <ngb-tab title="Maps">
           <ng-template ngbTabContent>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
             </div>
             <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
               <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-            </agm-map>
+            </agm-map> -->
           </ng-template>
         </ngb-tab>
       </ngb-tabset>

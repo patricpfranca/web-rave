@@ -11,4 +11,5 @@ export interface Event {
       instagram: string;
     }
   };
+  imagePath: any;
 }

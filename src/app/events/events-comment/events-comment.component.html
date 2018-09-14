@@ -7,9 +7,12 @@
       <div class="card comment-list comment-box">
         <div class="card-header">
           <div class="row">
-            <div class="col-md-10">
+            <div class="col-md-9">
               <span>Agustin Ortiz</span>
               <span class="comment-time">hace 20 minutos</span>
+            </div>
+            <div class="col row float-right" [ngbTooltip]="tipContent" tooltipClass="my-custom-class">
+              <span>Média: </span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.media" [theme]="'stars'"></bar-rating>
             </div>
           </div>
         </div>
@@ -17,6 +20,21 @@
           <p class="font-weight-light">{{ comment.comment }}</p>
         </div>
       </div>
+      <ng-template #tipContent>
+        <div class="row">
+          <div class="col" style="column-count: 3;">
+            <span class="text-muted text-sm-left text-tool">Pub</span> <bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.pub" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Local</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.local" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Food</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.food" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Lineup</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.lineup" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Stall</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.stall" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Bathroom</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.bathroom" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Lighting</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.lighting" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Security</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.security" [theme]="'stars'"></bar-rating>
+            <span class="text-muted text-sm-left text-tool">Cleaning</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.cleaning" [theme]="'stars'"></bar-rating>
+          </div>
+        </div>
+      </ng-template>
     </li>
   </ul>
 </div>
@@ -25,6 +43,9 @@
 </ng-template>
 
 <style>
+.text-tool {
+  font-size: 12px;
+}
 .comment-time {
 	color: #999;
 	font-size: 13px;

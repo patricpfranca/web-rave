@@ -5,13 +5,16 @@
 export const environment = {
   production: false,
   FirebaseConfig: {
-    apiKey: 'AIzaSyB9iAWlTxNeszc-ksaaE3Ge0cKDHIjxTLw',
-    authDomain: 'web-rave.firebaseapp.com',
-    databaseURL: 'https://web-rave.firebaseio.com',
-    projectId: 'web-rave',
-    storageBucket: 'web-rave.appspot.com',
-    messagingSenderId: '907667834095'
-  }
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: ''
+  },
+  API: 'http://localhost:3000',
+  AGM_CORE_KEY: ''
+  
 };
 
 /*

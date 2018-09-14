@@ -23,9 +23,10 @@ export class EventsRatingsComponent implements OnInit {
       security: new FormControl(0),
       cleaning: new FormControl(0)
     }),
-    comment: new FormControl(null)
+    comment: new FormControl(null, [Validators.required, Validators.maxLength(140)])
   });
   public idEvent = '';
+  public modalRef: any;
 
   constructor(
     private modalService: NgbModal,
@@ -38,14 +39,19 @@ export class EventsRatingsComponent implements OnInit {
   }
 
   openModal(content) {
-    this.modalService.open(content, { size: 'lg' });
+    this.modalRef = this.modalService.open(content, { size: 'lg' });
   }
 
   public ratingsCreate() {
     const body = this.ratingsForm.value;
+    const rating = body.ratings;
+    const media = (rating.pub + rating.local + rating.food + rating.lineup + rating.stall
+      + rating.bathroom + rating.lighting + rating.security + rating.cleaning) / 9;
+    body.media = Math.round(media);
     body._eventId = this.idEvent;
     this.ratingsService.createRatings(body).subscribe((res) => {
       this.ratingsForm.reset();
+      this.modalRef.close();
     }, (error) => {
       console.log(error);
     });

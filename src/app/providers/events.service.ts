@@ -5,7 +5,8 @@ import { AngularFireStorage } from 'angularfire2/storage';
 
 import { Event } from '../shared/models/event.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { WR_API } from '../app.api';
+
+import { environment } from '../../environments/environment';
 
 import { Observable } from 'rxjs';
 
@@ -23,7 +24,7 @@ export class EventsService {
   public imageUrl: string;
 
   public createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(`${WR_API}/events`, event, { headers: this.headers });
+    return this.http.post<Event>(`${environment.API}/events`, event, { headers: this.headers });
   }
 
   public updateEvent(event: any, key: string) {
@@ -35,11 +36,11 @@ export class EventsService {
   }
 
   public EventsById(id: string) {
-    return this.http.get(`${WR_API}/events/${id}`);
+    return this.http.get(`${environment.API}/events/${id}`);
   }
 
   public getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${WR_API}/events`);
+    return this.http.get<Event[]>(`${environment.API}/events`);
   }
 
 }

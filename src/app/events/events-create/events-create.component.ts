@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { } from '@types/googlemaps';
 import { MapsAPILoader } from '@agm/core';
+import BaseFile from '../../shared/functions/file';
 
 import {
   NgbModal,
@@ -109,12 +110,20 @@ export class EventsCreateComponent implements OnInit {
   public createEvent() {
     const file = this.image.item(0);
     const body = this.form.value;
-    body.imagePath = file;
-    this.eventsService.createEvent(body).subscribe(() => {
-      this.form.reset();
-      this.modalRef.close();
-    }, (error) => {
-      console.log(error);
+
+    const baseFile = new BaseFile();
+
+    baseFile.base64Encode(file).then((value) => {
+      value.onload = () => {
+        body.imagePath = value.result;
+        console.log(value);
+        this.eventsService.createEvent(body).subscribe(() => {
+          this.form.reset();
+          this.modalRef.close();
+        }, (error) => {
+          console.log(error);
+        });
+      };
     });
   }
 

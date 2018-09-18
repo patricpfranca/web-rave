@@ -9,7 +9,7 @@
         <span class="year">{{ event.dateStart | date: 'yyyy' }}</span>
       </div>
       <a [routerLink]="['/events', event._id]">
-        <img class="card-img-top" [src]="event.imagePath">
+        <img class="card-img-top" title="{{event.title}}" style="height: 190px;" [src]="event.imagePath">
       </a>
       <div class="card-body">
         <a [routerLink]="['/events', event._id]" class="text-link">

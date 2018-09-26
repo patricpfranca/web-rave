@@ -1,3 +1,4 @@
+import { LoginComponent } from './access/login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,13 +21,14 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { AlertService } from './providers/alert.service';
+import { AccessModule } from './access/access.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AccessComponent
+    AppComponent
   ],
   imports: [
+    AccessModule,
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,

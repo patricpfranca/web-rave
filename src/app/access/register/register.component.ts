@@ -1,9 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 import { Authentication } from '../../providers/authentication.service';
 
 import { User } from '../../shared/models/user.model';
+import { UserService } from '../../providers/user.service';
+import { AlertService } from '../../providers/alert.service';
+import { Router } from '@angular/router';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -14,43 +18,56 @@ export class RegisterComponent implements OnInit {
 
   @Output() public showPanel: EventEmitter<string> = new EventEmitter<string>();
   public message: string;
+  public form: FormGroup;
+  public loading = false;
+  public submitted = false;
 
-  public form: FormGroup = new FormGroup({
-    'firstname': new FormControl(null, [
-      Validators.required, Validators.minLength(3)
-    ]),
-    'lastname': new FormControl(null, [
-      Validators.required, Validators.minLength(3)
-    ]),
-    'email': new FormControl(null, [
-      Validators.required, Validators.email
-    ]),
-    'password': new FormControl(null, [
-      Validators.required, Validators.minLength(6)
-    ])
-  });
-
-  constructor(private authentication: Authentication) { }
+  constructor(
+    private authentication: Authentication,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     this.authentication.message.subscribe(
       (res) => { this.message = res; }
     );
+
+    this.form = this.formBuilder.group({
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   public showPanelLogin(): void {
     this.showPanel.emit('login');
   }
 
-  public registerUser(): void {
-    const user: User = new User(
-      this.form.value.firstname,
-      this.form.value.lastname,
-      this.form.value.email,
-      this.form.value.password
-    );
+  public get f() { return this.form.controls; }
 
-    this.authentication.createUser(user);
+  public registerUser() {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    this.userService.register(this.form.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.alertService.sucess('Registration successfull', true);
+          this.router.navigate(['/login']);
+        },
+        error => {
+          this.alertService.error(error);
+          this.loading = false;
+        });
   }
 
 }

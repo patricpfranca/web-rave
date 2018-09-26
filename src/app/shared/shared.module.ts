@@ -20,6 +20,10 @@ import { NgbDateParserFormatterEsMX } from './config/ng-bootstrap.date-parser-fo
 
 import { BarRatingModule } from 'ngx-bar-rating';
 import { AgmCoreModule } from '@agm/core';
+import { UserService } from '../providers/user.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 const modules = [
   RouterModule,
@@ -56,9 +60,12 @@ const pipes = [
     ...pipes
   ],
   providers: [
+    UserService,
     I18n,
     { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n },
-    { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX }
+    { provide: NgbDateParserFormatter, useClass: NgbDateParserFormatterEsMX },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ]
 })
 export class SharedModule { }

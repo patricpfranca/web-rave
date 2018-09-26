@@ -1,11 +1,8 @@
-import { EventsComponent } from './events/events.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AccessComponent } from './access/access.component';
-
 const appRoutes: Routes = [
-  { path: '', component: AccessComponent }
+  { path: '', loadChildren: './access/access.module#AccessModule' }
 ];
 
 @NgModule({

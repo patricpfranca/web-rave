@@ -1,16 +1,5 @@
 <div class="container-login">
   <div class="wrap-login">
-    <div>
-      <div *ngIf="register; else formLogin">
-        <div>
-          <app-register (showPanel)="showPanel($event)"></app-register>
-        </div>
-      </div>
-      <ng-template #formLogin>
-        <div>
-          <app-login (showPanel)="showPanel($event)"></app-login>
-        </div>
-      </ng-template>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

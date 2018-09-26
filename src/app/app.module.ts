@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './home/home.module';
 import { AppRoutingModule } from './app.routing.module';
 import { AccessComponent } from './access/access.component';
-import { LoginComponent } from './access/login/login.component';
-import { RegisterComponent } from './access/register/register.component';
 
 import { Authentication } from './providers/authentication.service';
 import { AuthGuard } from './providers/auth-guard.service';
@@ -21,13 +19,12 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { environment } from '../environments/environment';
 import { AgmCoreModule } from '@agm/core';
+import { AlertService } from './providers/alert.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AccessComponent,
-    LoginComponent,
-    RegisterComponent
+    AccessComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -45,7 +42,7 @@ import { AgmCoreModule } from '@agm/core';
       libraries: ['places']
     })
   ],
-  providers: [ Authentication, AuthGuard ],
+  providers: [ Authentication, AuthGuard, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

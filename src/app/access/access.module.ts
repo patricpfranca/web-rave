@@ -5,10 +5,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
+import { AccessRoutingModule } from './access.routing.module';
+
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AccessRoutingModule
   ],
   declarations: [
     RegisterComponent,

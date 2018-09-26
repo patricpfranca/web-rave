@@ -1,70 +1,34 @@
 import { Router } from '@angular/router';
 import { Injectable, EventEmitter } from '@angular/core';
 
-import { User } from '../shared/models/user.model';
-
-import * as firebase from 'firebase';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class Authentication {
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   public token_id: string;
   public message = new EventEmitter<string>();
 
-  public createUser(user: User): void {
+  public login(email: string, password: string) {
+    return this.http.post<any>(`${environment.API}/authenticate`, { email: email, password: password })
+      .pipe(map(user => {
+        if (user && user.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
 
-    firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
-      .then((res: any) => {
-        delete user.password;
-
-        firebase.database().ref('user/' + firebase.auth().currentUser.uid)
-          .set(user);
-      })
-      .catch((error: Error) => {
-        this.message.emit(error.message);
-      });
-
+        return user;
+      }));
   }
 
-  public authenticate(email: string, password: string): void {
-
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((res: any) => {
-        firebase.auth().currentUser.getIdToken()
-          .then((idToken: string) => {
-            this.token_id = idToken;
-            localStorage.setItem('idToken', idToken);
-            this.router.navigate(['/home']);
-          });
-      })
-      .catch((error: Error) => {
-        this.message.emit(error.message);
-      });
-  }
-
-  public authenticated(): boolean {
-
-    if (this.token_id === undefined && localStorage.getItem('idToken') != null) {
-      this.token_id = localStorage.getItem('idToken');
-    }
-
-    if (this.token_id === undefined) {
-      this.router.navigate(['/']);
-    }
-
-    return this.token_id !== undefined;
-  }
-
-  public logout(): void {
-
-    firebase.auth().signOut()
-      .then(() => {
-        localStorage.removeItem('idToken');
-        this.token_id = undefined;
-      });
-
+  public logout() {
+    localStorage.removeItem('currentUser');
   }
 
 }

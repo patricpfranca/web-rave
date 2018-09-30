@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { Component, OnInit, ViewChildren } from '@angular/core';
 import * as anime from 'animejs';
 
@@ -14,19 +15,23 @@ export class EventsComponent implements OnInit {
   public events: Event[] = [];
   @ViewChildren('card') card;
   public playing = false;
+  private page = 0;
+  private total: number;
 
   constructor(
     private eventsService: EventsService
   ) { }
 
   ngOnInit() {
-    this.getEventsAll();
+    this.getEventsAll(0);
   }
 
-  public getEventsAll() {
-    this.eventsService.getEvents()
+  public getEventsAll(page: number) {
+    this.eventsService.getEvents(page)
       .subscribe((events: Event[]) => {
         this.events = events;
+        this.total = this.events.count;
+        this.page = page;
       });
   }
 

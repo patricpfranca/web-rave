@@ -1,7 +1,7 @@
 <app-title></app-title>
 <app-events-create></app-events-create>
 <section class="row mt-2 flex-wrap">
-  <div class="col-md-4 mb-3" *ngFor="let event of events.events; let i = index">
+  <div class="col-md-4 mb-3" *ngFor="let event of events.events | paginate: { itemsPerPage: 9, currentPage: page, totalItems: total }; let i = index">
     <div class="card card-flip shadow-lg" #card>
       <div class="date">
         <span class="day">{{ event.dateStart | date: 'dd' }}</span>
@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+  <pagination-controls (pageChange)="getEventsAll($event)"></pagination-controls>
 </section>
 
 

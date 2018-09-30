@@ -39,8 +39,8 @@ export class EventsService {
     return this.http.get(`${environment.API}/events/${id}`);
   }
 
-  public getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(`${environment.API}/events`);
+  public getEvents(page: number = 0): Observable<Event[]> {
+    return this.http.get<Event[]>(`${environment.API}/events?page=${page}`);
   }
 
 }

@@ -11,7 +11,7 @@ import { Event } from '../shared/models/event.interface';
 })
 export class EventsComponent implements OnInit {
 
-  public events: Event[];
+  public events: Event[] = [];
   @ViewChildren('card') card;
   public playing = false;
 

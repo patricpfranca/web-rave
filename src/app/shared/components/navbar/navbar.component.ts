@@ -22,4 +22,8 @@ export class NavbarComponent implements OnInit {
     this.authentication.logout();
   }
 
+  public search(textSearch: string): void {
+    console.log(textSearch);
+  }
+
 }

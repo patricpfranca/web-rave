@@ -43,4 +43,8 @@ export class EventsService {
     return this.http.get<Event[]>(`${environment.API}/events?page=${page}`);
   }
 
+  public searchEvents(value: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${environment.API}/events?title=${value}`);
+  }
+
 }

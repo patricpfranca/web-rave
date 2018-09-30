@@ -7,6 +7,11 @@
           <a class="nav-link" [routerLink]="['/events']">Eventos</a>
         </li>
         <li class="nav-item">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control form-rounded" type="text" (keyup)="search(searchEvent.value)" #searchEvent>
+          </form>
+        </li>
+        <li class="nav-item pull-right">
           <a href="#" class="nav-link" (click)="logout()">Sair</a>
         </li>
       </ul>

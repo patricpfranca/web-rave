@@ -40,7 +40,7 @@ export class EventsService {
   }
 
   public getEvents(page: number = 0): Observable<Event[]> {
-    return this.http.get<Event[]>(`${environment.API}/events?page=${page}`);
+    return this.http.get<Event[]>(`${environment.API}/events?pages=${page}&limit=9`);
   }
 
   public searchEvents(value: string): Observable<Event[]> {

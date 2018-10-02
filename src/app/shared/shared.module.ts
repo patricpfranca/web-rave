@@ -10,7 +10,6 @@ import {
   NgbDatepickerI18n,
   NgbTabsetModule,
   NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxPaginationModule } from 'ngx-pagination';
 
 import { TitleComponent } from './components/title/title.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,8 +33,7 @@ const modules = [
   BarRatingModule,
   NgbTabsetModule,
   NgbTooltipModule,
-  AgmCoreModule,
-  NgxPaginationModule
+  AgmCoreModule
 ];
 
 const components = [

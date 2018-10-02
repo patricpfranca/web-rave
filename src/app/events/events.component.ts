@@ -30,8 +30,6 @@ export class EventsComponent implements OnInit {
     this.eventsService.getEvents(page)
       .subscribe((events: Event[]) => {
         this.events = events;
-        this.total = this.events.count;
-        this.page = page;
       });
   }
 

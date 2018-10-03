@@ -1,7 +1,7 @@
 <app-title></app-title>
 <app-events-create></app-events-create>
 <section class="row mt-2 flex-wrap">
-  <div class="col-md-4 mb-3" *ngFor="let event of events.events; let i = index">
+  <div class="col-md-4 mb-3" *ngFor="let event of events.events | paginate: { itemsPerPage: 9, currentPage: p, totalItems: events.count}; let i = index">
     <div class="card card-flip shadow-lg" #card>
       <div class="date">
         <span class="day">{{ event.dateStart | date: 'dd' }}</span>
@@ -18,6 +18,9 @@
         <p class="text-muted" style="color: #CCDAD1;"><i class="far fa-calendar-alt mr-1"></i>{{ event.dateStart | date: 'EEE, MMMM d, y' }}</p>
       </div>
     </div>
+  </div>
+  <div class="row col-md-12 justify-content-center">
+    <pagination-controls (pageChange)="p = $event" autoHide="true" previousLabel="<" nextLabel=">"></pagination-controls>
   </div>
 </section>
 

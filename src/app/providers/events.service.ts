@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase } from 'angularfire2/database';
-import { AngularFireStorage } from 'angularfire2/storage';
-
 import { Event } from '../shared/models/event.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -14,8 +11,6 @@ import { Observable } from 'rxjs';
 export class EventsService {
 
   constructor(
-    private db: AngularFireDatabase,
-    private st: AngularFireStorage,
     private http: HttpClient
   ) {}
 
@@ -25,14 +20,6 @@ export class EventsService {
 
   public createEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(`${environment.API}/events`, event, { headers: this.headers });
-  }
-
-  public updateEvent(event: any, key: string) {
-    this.db.list('events').update(key, event);
-  }
-
-  public saveImage(image: any, key: string) {
-    return this.st.ref(`images/${key}`).put(image[0]);
   }
 
   public EventsById(id: string) {

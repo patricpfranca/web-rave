@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="row col-md-12">
     <div class="container">
-      <div class="partone col-md-12" style="height: 30px;">
+      <div class="part-one col-md-12" style="height: 30px;">
         <div class="img">
           <a [routerLink]="['/home']">
             <img style="position: absolute; width: 160px; margin-left: 20px; margin-top: 15px;" src="https://s3-sa-east-1.amazonaws.com/web-rave/VGI3SVVKRWg1SS9TZENvMERKOXM2dz09LS11T3UyMHkvM1B2TC9RWUpuMDBFVHR3PT0%3D--5fc03caef4fb42901963721b41b743909614a023_1000x.svg.png">
@@ -12,11 +12,12 @@
           <input class="form-control form-rounded col-md-8" type="text" (keyup)="search(searchEvent.value)" #searchEvent>
         </div>
       </div>
-      <div class="parttwo col-md-12" style="height: 40px;">
+      <div class="part-two col-md-12" style="height: 40px;">
         <div class="float-right" style="margin-top: 15px;">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item menu-item-nav"><a class="nav-link" [routerLink]="['/register']">Crie uma conta</a></li>
             <li class="nav-item menu-item-nav"><a class="nav-link" [routerLink]="['/login']">Entre</a></li>
+            <li class="nav-item menu-item-nav"><a href="" class="nav-link"></a></li>
             <li class="nav-item menu-item-nav"><a class="nav-link">Contato</a></li>
             <li class="nav-item menu-item-nav"><a href="#" class="nav-link" (click)="logout()">Sair</a></li>
           </ul>

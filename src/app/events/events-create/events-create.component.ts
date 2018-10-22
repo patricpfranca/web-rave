@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { } from '@types/googlemaps';
+// import { } from '@types/googlemaps';
 import { MapsAPILoader } from '@agm/core';
 import BaseFile from '../../shared/functions/file';
 

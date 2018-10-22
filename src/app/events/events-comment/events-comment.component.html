@@ -1,6 +1,6 @@
-<div class="col-md-11" *ngIf="comments.length; else notcomment">
+<div class="col-md-11" *ngIf="comments.ratings.length; else notcomment">
   <ul>
-    <li class="row" *ngFor="let comment of comments">
+    <li class="row" *ngFor="let comment of comments.ratings">
       <div class="img-comment">
         <img class="img-thumbnail shadow-sm" src="https://vignette.wikia.nocookie.net/spongebob/images/b/bb/Bob_Esponja.png/revision/latest?cb=20110611200507&path-prefix=pt-br" alt="">
       </div>

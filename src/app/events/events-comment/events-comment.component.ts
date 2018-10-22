@@ -27,6 +27,7 @@ export class EventsCommentComponent implements OnInit {
     this.ratingsService.findCommentsRating(this.idEvent)
       .subscribe((ratings: Rating[]) => {
         this.comments = ratings;
+        console.log(this.comments);
       });
   }
 

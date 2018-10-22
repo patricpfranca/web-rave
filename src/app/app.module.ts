@@ -36,7 +36,11 @@ import { AccessModule } from './access/access.module';
       libraries: ['places']
     })
   ],
-  providers: [ Authentication, AuthGuard, AlertService ],
+  providers: [
+    Authentication,
+    AuthGuard,
+    AlertService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

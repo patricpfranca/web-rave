@@ -10,12 +10,12 @@
         <form [formGroup]="form" (ngSubmit)="registerUser()" novalidate>
           <div class="align-self-center">
             <div class="form-group">
-              <input type="text" class="form-control form-rounded" formControlName="firstname" placeholder="Firstname">
-              <small *ngIf="!form.get('firstname').valid && form.get('firstname').touched" class="form-text text-danger"><em>Firstname invalid</em></small>
+              <input type="text" class="form-control form-rounded" formControlName="firstName" placeholder="Firstname">
+              <small *ngIf="!form.get('firstName').valid && form.get('firstName').touched" class="form-text text-danger"><em>Firstname invalid</em></small>
             </div>
             <div class="form-group">
-              <input type="text" class="form-control form-rounded" formControlName="lastname" placeholder="Lastname">
-              <small *ngIf="!form.get('lastname').valid && form.get('lastname').touched" class="form-text text-danger"><em>Lastname invalid</em></small>
+              <input type="text" class="form-control form-rounded" formControlName="lastName" placeholder="Lastname">
+              <small *ngIf="!form.get('lastName').valid && form.get('lastName').touched" class="form-text text-danger"><em>Lastname invalid</em></small>
             </div>
             <div class="form-group">
               <input type="text" class="form-control form-rounded" formControlName="username" placeholder="Email">

@@ -15,11 +15,19 @@
       <div class="part-two col-md-12" style="height: 40px;">
         <div class="float-right" style="margin-top: 15px;">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item menu-item-nav"><a class="nav-link" [routerLink]="['/register']">Crie uma conta</a></li>
-            <li class="nav-item menu-item-nav"><a class="nav-link" [routerLink]="['/login']">Entre</a></li>
-            <li class="nav-item menu-item-nav"><a href="" class="nav-link"></a></li>
+            <li class="nav-item menu-item-nav" *ngIf="!currentUser"><a class="nav-link" [routerLink]="['/register']">Crie uma conta</a></li>
+            <li class="nav-item menu-item-nav" *ngIf="!currentUser"><a class="nav-link" [routerLink]="['/login']">Entre</a></li>
+            <li class="nav-item menu-item-nav dropdown" *ngIf="currentUser">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="currentUser" aria-haspopup="true" aria-expanded="false">
+                Olá <i class="font-weight-bold" style="padding-right: 8px">{{ currentUser.firstName }}</i><i class="fas fa-angle-down"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="currentUser">
+                <a href="#" class="dropdown-item">Meu perfil</a>
+                <a href="#" class="dropdown-item">Meus comentários</a>
+                <a href="#" class="dropdown-item" (click)="logout()">Sair</a>
+              </ul>
+            </li>
             <li class="nav-item menu-item-nav"><a class="nav-link">Contato</a></li>
-            <li class="nav-item menu-item-nav"><a href="#" class="nav-link" (click)="logout()">Sair</a></li>
           </ul>
         </div>
         <div class="nav-menu">
@@ -33,6 +41,14 @@
 </nav>
 
 <style>
+.navbar-nav li:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-link.dropdown-toggle::after {
+  content: none;
+}
+
 .menu-item-nav {
   padding-left: 7px;
   padding: 0 6px;

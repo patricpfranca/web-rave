@@ -16,12 +16,16 @@ export class NavbarComponent implements OnInit {
 
   faUser = faUser;
   public events: Observable<Event[]>;
+  public currentUser;
 
   constructor(
     private authentication: Authentication,
     private eventsService: EventsService) { }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+
+    console.log(this.currentUser);
   }
 
   public logout(): void {

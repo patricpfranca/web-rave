@@ -1,5 +1,6 @@
 import { map } from 'rxjs/operators';
 import { Component, OnInit, ViewChildren } from '@angular/core';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import * as anime from 'animejs';
 
 import { EventsService } from '../providers/events.service';
@@ -24,6 +25,18 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.getEventsAll(0);
+
+    this.eventsService.searchTerm.asObservable()
+      .subscribe(textSearch => {
+        this.eventsService.searchTerm.pipe(
+          debounceTime(1000),
+          distinctUntilChanged()
+        ).subscribe(() => {
+          console.log('debounce');
+          this.eventsService.searchEvents(textSearch);
+        });
+        // this.results = results.results;
+      });
   }
 
   public getEventsAll(page: number) {

@@ -5,7 +5,7 @@ import { Authentication } from '../../../providers/authentication.service';
 import { EventsService } from '../../../providers/events.service';
 import { Event } from '../../models/event.interface';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authentication: Authentication,
-    private eventsService: EventsService) { }
+    public eventsService: EventsService) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('currentUser')) {
@@ -34,6 +34,10 @@ export class NavbarComponent implements OnInit {
           }
         });
     }
+  }
+
+  public searchItems(text: string) {
+    this.eventsService.searchTerm.next(text);
   }
 
   public logout(): void {

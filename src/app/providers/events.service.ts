@@ -5,18 +5,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from '../../environments/environment';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 @Injectable()
 export class EventsService {
 
+  public searchTerm = new Subject<string>();
+  public imageUrl: string;
+  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
   constructor(
     private http: HttpClient
   ) {}
-
-  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
-  public imageUrl: string;
 
   public createEvent(event: Event): Observable<Event> {
     return this.http.post<Event>(`${environment.API}/events`, event, { headers: this.headers });
@@ -32,6 +33,16 @@ export class EventsService {
 
   public searchEvents(value: string): Observable<Event[]> {
     return this.http.get<Event[]>(`${environment.API}/events?title=${value}`);
+  }
+
+  public search(term: string) {
+    return this.searchTerm.pipe(
+      debounceTime(1000),
+      distinctUntilChanged()
+    ).subscribe(() => {
+      console.log('debounce', term);
+      this.searchEvents(term);
+    });
   }
 
 }

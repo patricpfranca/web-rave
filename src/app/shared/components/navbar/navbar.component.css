@@ -1,0 +1,45 @@
+.navbar-nav li:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-link.dropdown-toggle::after {
+  content: none;
+}
+
+.menu-item-nav {
+  padding-left: 7px;
+  padding: 0 6px;
+  font-size: 15px;
+}
+
+.nav-menu {
+  display: block;
+  margin: 15px 0 0 225px;
+  max-width: 785px;
+  float: left;
+  font-size: 15px;
+}
+
+.inner-addon { 
+  position: relative;
+  margin-left: 225px;
+  margin-top: 10px;
+}
+
+/* style icon */
+.inner-addon .fas {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon .fas  { 
+  left:  5px;
+  top: 1px;
+  color: #ccc;
+  z-index: 1;
+}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }

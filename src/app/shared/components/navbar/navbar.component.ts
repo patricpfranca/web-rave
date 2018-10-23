@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import { Authentication } from '../../../providers/authentication.service';
@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class NavbarComponent implements OnInit {
 
@@ -23,7 +24,16 @@ export class NavbarComponent implements OnInit {
     private eventsService: EventsService) { }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    if (sessionStorage.getItem('currentUser')) {
+      this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    } else {
+      this.authentication.getCurrentUser()
+        .subscribe((user) => {
+          if (user) {
+            this.currentUser = user;
+          }
+        });
+    }
   }
 
   public logout(): void {

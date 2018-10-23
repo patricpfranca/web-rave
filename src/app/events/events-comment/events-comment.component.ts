@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RatingsService } from '../../providers/ratings.service';
 import { Rating } from '../../shared/models/rating.interface';
@@ -6,7 +6,8 @@ import { Rating } from '../../shared/models/rating.interface';
 @Component({
   selector: 'app-events-comment',
   templateUrl: './events-comment.component.html',
-  styleUrls: ['./events-comment.component.css']
+  styleUrls: ['./events-comment.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EventsCommentComponent implements OnInit {
 

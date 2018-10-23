@@ -3,7 +3,6 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { UserService } from './user.service';
 
 @Injectable()
 export class Authentication {

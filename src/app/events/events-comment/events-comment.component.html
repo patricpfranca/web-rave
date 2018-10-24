@@ -1,40 +1,13 @@
 <div class="col-md-11" *ngIf="comments.ratings.length; else notcomment">
-  <ul>
-    <li class="row" *ngFor="let comment of comments.ratings">
-      <div class="img-comment">
-        <img class="img-thumbnail shadow-sm" src="https://vignette.wikia.nocookie.net/spongebob/images/b/bb/Bob_Esponja.png/revision/latest?cb=20110611200507&path-prefix=pt-br" alt="">
+  <ul class="comments" *ngFor="let comment of comments.ratings">
+    <li class="comment">
+      <div class="col-md-12">
+        <h6 class="font-weight-bold comment-name">Nome</h6>
+        <span>
+          <span>{{ comment.comment }}</span>
+          <small class="text-muted comment-time">HÁ 15 MINUTOS</small>
+        </span>
       </div>
-      <div class="card comment-list comment-box">
-        <div class="card-header">
-          <div class="row">
-            <div class="col-md-9">
-              <span>Agustin Ortiz</span>
-              <span class="comment-time">hace 20 minutos</span>
-            </div>
-            <div class="col row float-right" [ngbTooltip]="tipContent" tooltipClass="my-custom-class">
-              <span>Média: </span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.media" [theme]="'stars'"></bar-rating>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <p class="font-weight-light">{{ comment.comment }}</p>
-        </div>
-      </div>
-      <ng-template #tipContent>
-        <div class="row">
-          <div class="col" style="column-count: 3;">
-            <span class="text-muted text-sm-left text-tool">Pub</span> <bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.pub" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Local</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.local" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Food</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.food" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Lineup</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.lineup" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Stall</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.stall" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Bathroom</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.bathroom" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Lighting</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.lighting" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Security</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.security" [theme]="'stars'"></bar-rating>
-            <span class="text-muted text-sm-left text-tool">Cleaning</span><bar-rating [max]="5" [readOnly]="true" [rate]="comment.ratings.cleaning" [theme]="'stars'"></bar-rating>
-          </div>
-        </div>
-      </ng-template>
     </li>
   </ul>
 </div>

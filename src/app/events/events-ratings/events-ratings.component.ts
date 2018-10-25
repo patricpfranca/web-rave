@@ -52,7 +52,7 @@ export class EventsRatingsComponent implements OnInit {
       + rating.bathroom + rating.lighting + rating.security + rating.cleaning) / 9;
     body.media = Math.round(media);
     body._eventId = this.idEvent;
-    body.userId = this.userId;
+    body._user = this.userId;
     this.ratingsService.createRatings(body).subscribe((res) => {
       this.ratingsForm.reset();
       this.modalRef.close();

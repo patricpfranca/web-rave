@@ -1,3 +1,4 @@
+import { UserService } from './../../providers/user.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RatingsService } from '../../providers/ratings.service';
@@ -16,7 +17,8 @@ export class EventsCommentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private ratingsService: RatingsService
+    private ratingsService: RatingsService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class EventsCommentComponent implements OnInit {
     this.ratingsService.findCommentsRating(this.idEvent)
       .subscribe((ratings: Rating[]) => {
         this.comments = ratings;
-        console.log(this.comments);
+        // this.userService.getById(ratings.userId).subscribe();
       });
   }
 

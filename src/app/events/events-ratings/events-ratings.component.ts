@@ -23,10 +23,11 @@ export class EventsRatingsComponent implements OnInit {
       security: new FormControl(0),
       cleaning: new FormControl(0)
     }),
-    comment: new FormControl(null, [Validators.required, Validators.maxLength(140)])
+    comment: new FormControl(null, [Validators.required, Validators.maxLength(140)]),
   });
   public idEvent = '';
   public modalRef: any;
+  public userId: string;
 
   constructor(
     private modalService: NgbModal,
@@ -36,6 +37,8 @@ export class EventsRatingsComponent implements OnInit {
 
   ngOnInit() {
     this.idEvent = this.route.snapshot.params._id;
+    const user = JSON.parse(sessionStorage.getItem('currentUser'));
+    this.userId = user._id;
   }
 
   openModal(content) {
@@ -49,6 +52,7 @@ export class EventsRatingsComponent implements OnInit {
       + rating.bathroom + rating.lighting + rating.security + rating.cleaning) / 9;
     body.media = Math.round(media);
     body._eventId = this.idEvent;
+    body.userId = this.userId;
     this.ratingsService.createRatings(body).subscribe((res) => {
       this.ratingsForm.reset();
       this.modalRef.close();

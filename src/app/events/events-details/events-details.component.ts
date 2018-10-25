@@ -1,19 +1,17 @@
 import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { EventsService } from '../../providers/events.service';
 
 @Component({
   selector: 'app-events-details',
   templateUrl: './events-details.component.html',
-  styleUrls: ['./events-details.component.css']
+  styleUrls: ['./events-details.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class EventsDetailsComponent implements OnInit {
 
   public event: Event;
-  faStar = faStar;
 
   constructor(
     private route: ActivatedRoute,

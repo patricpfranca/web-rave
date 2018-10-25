@@ -1,5 +1,5 @@
-<div class="col-md-11" *ngIf="comments.ratings.length; else notcomment">
-  <ul class="comments" *ngFor="let comment of comments.ratings">
+<div class="col-md-12" *ngIf="comments.ratings.length; else notcomment">
+  <ul class="comments" style="margin-left: -35px;" *ngFor="let comment of comments.ratings">
     <li class="comment">
       <div class="col-md-12">
         <h6 class="font-weight-bold comment-name">{{ comment._user.firstName + ' ' + comment._user.lastName }}</h6>

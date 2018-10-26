@@ -23,7 +23,7 @@
                   Olá <i class="font-weight-bold" style="padding-right: 8px">{{ currentUser.firstName }}</i><i class="fas fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="currentUser">
-                  <a href="#" class="dropdown-item">Meu perfil</a>
+                  <a [routerLink]="['/profile']" class="dropdown-item">Meu perfil</a>
                   <a href="#" class="dropdown-item">Meus comentários</a>
                   <a href="#" class="dropdown-item" (click)="logout()">Sair</a>
                 </ul>

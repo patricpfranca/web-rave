@@ -17,6 +17,7 @@ import { environment } from '../environments/environment';
 import { AgmCoreModule } from '@agm/core';
 import { AlertService } from './providers/alert.service';
 import { AccessModule } from './access/access.module';
+import { ProfilesModule } from './profiles/profiles.module';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { AccessModule } from './access/access.module';
     AppRoutingModule,
     HomeModule,
     EventsModule,
+    ProfilesModule,
     SharedModule,
     HttpClientModule,
     AgmCoreModule.forRoot({

@@ -1,7 +1,18 @@
-<div class="col-md-12">
-  <div class="card">
-    <div class="card-body">
-      {{ profiles }}
+<div class="row mt-5">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row text-uppercase font-weight-bold ml-3 mb-1">Dados da conta</div>
+        <hr style="width: 98%;">
+        <div class="row mt-1 mr-3 ml-3">
+          <div class="row col-md-12 font-weight-bold">Nome completo:</div>
+          <div class="row ml-2">{{ profile.firstName + ' ' + profile.lastName }}</div>
+          <div class="row col-md-12 font-weight-bold mt-2">Usuário:</div>
+          <div class="row ml-2">{{ profile.username }}</div>
+          <div class="row col-md-12 font-weight-bold mt-2">Cadastrado em:</div>
+          <div class="row ml-2">{{ profile.createdAt | date: 'dd/MM/yyyy' }}</div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

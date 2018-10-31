@@ -19,8 +19,16 @@
       <div class="container">
         <ul class="social-icons icon-circle icon-zoom list-unstyled list-inline mt-2">
           <li>Sigam nas redes sociais: </li>
-          <li><a target="_blank" [href]="event?.socials?.facebook"><i class="fab fa-facebook-square" alt="Evento"></i></a></li>
-          <li><a target="_blank" [href]="event?.socials?.instagram"><i class="fab fa-instagram" alt="Instagram"></i></a></li>
+          <li *ngIf="event?.socials?.facebook != null">
+            <a target="_blank" [href]="event?.socials?.facebook">
+              <i class="fab fa-facebook-square" alt="Evento"></i>
+            </a>
+          </li>
+          <li *ngIf="event?.socials?.instagram != null">
+            <a target="_blank" [href]="event?.socials?.instagram">
+              <i class="fab fa-instagram" alt="Instagram"></i>
+            </a>
+          </li>
           <li class="float-right">
             <app-events-ratings></app-events-ratings>
           </li>

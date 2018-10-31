@@ -1,11 +1,11 @@
-<div class="col-md-12" *ngIf="comments.ratings.length; else notcomment">
+<div class="col-md-12" *ngIf="comments?.ratings?.length; else notcomment">
   <ul class="comments" style="margin-left: -35px;" *ngFor="let comment of comments.ratings | paginate: { itemsPerPage: 10, currentPage: p, totalItems: comments.count}">
     <li class="comment">
       <div class="col-md-12">
-        <h6 class="font-weight-bold comment-name">{{ comment._user.firstName + ' ' + comment._user.lastName }}</h6>
+        <h6 class="font-weight-bold comment-name">{{ comment?._user?.firstName + ' ' + comment?._user?.lastName }}</h6>
         <span>
-          <span>{{ comment.comment }}</span>
-          <small class="text-muted comment-time">{{ comment.createdAt | diffDate }}</small>
+          <span>{{ comment?.comment }}</span>
+          <small class="text-muted comment-time">{{ comment?.createdAt | diffDate }}</small>
         </span>
       </div>
     </li>

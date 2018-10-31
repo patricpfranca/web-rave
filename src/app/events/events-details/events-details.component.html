@@ -2,25 +2,25 @@
   <div class="col-md-12 card shadow">
     <div class="row">
       <div class="col-md-8 col-img-event">
-        <img class="card-img-top img-event" [src]="event.imagePath">
+        <img class="card-img-top img-event" [src]="event?.imagePath">
       </div>
       <div class="col-md-4">
         <div class="date">
-          <span class="day">{{ event.dateStart | date: 'dd' }}</span>
-          <span class="month">{{ event.dateStart | date: 'MMM' }}</span>
-          <span class="year">{{ event.dateStart | date: 'yyyy' }}</span>
+          <span class="day">{{ event?.dateStart | date: 'dd' }}</span>
+          <span class="month">{{ event?.dateStart | date: 'MMM' }}</span>
+          <span class="year">{{ event?.dateStart | date: 'yyyy' }}</span>
         </div>
         
-        <h4 class="top-title text-center">{{ event.title }}</h4>
-        <h5 class="text-muted text-center mt-5">organizado por {{ event.organizer?.name }}</h5>
+        <h4 class="top-title text-center">{{ event?.title }}</h4>
+        <h5 class="text-muted text-center mt-5">organizado por {{ event?.organizer?.name }}</h5>
       </div>
     </div>
     <div class="row border-top border-bottom">
       <div class="container">
         <ul class="social-icons icon-circle icon-zoom list-unstyled list-inline mt-2">
           <li>Sigam nas redes sociais: </li>
-          <li><a target="_blank" [href]="event.socials.facebook"><i class="fab fa-facebook-square" alt="Evento"></i></a></li>
-          <li><a target="_blank" [href]="event.socials.instagram"><i class="fab fa-instagram" alt="Instagram"></i></a></li>
+          <li><a target="_blank" [href]="event?.socials?.facebook"><i class="fab fa-facebook-square" alt="Evento"></i></a></li>
+          <li><a target="_blank" [href]="event?.socials?.instagram"><i class="fab fa-instagram" alt="Instagram"></i></a></li>
           <li class="float-right">
             <app-events-ratings></app-events-ratings>
           </li>
@@ -32,11 +32,11 @@
         <div class="row mb-3">
           <div class="col-md-6">
             <div class="row text-uppercase font-weight-bold mb-3">descrição</div>
-            <p class="row font-weight-light">{{ event.description }}</p>
+            <p class="row font-weight-light">{{ event?.description }}</p>
           </div>
           <div class="col-md-5 offset-md-1">
             <div class="row text-uppercase font-weight-bold mb-3">data</div>
-            <p class="row font-weight-light mb-5">{{ event.dateStart | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }} - {{ event.dateEnd | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }}</p>
+            <p class="row font-weight-light mb-5">{{ event?.dateStart | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }} - {{ event?.dateEnd | date: 'EEE, dd/MM/yyyy, h:mm:ss a' }}</p>
             <div class="row text-uppercase font-weight-bold mb-3">local</div>
             <p class="row font-weight-light"></p>
           </div>

@@ -25,6 +25,7 @@ import { UserService } from '../providers/user.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { DiffDatePipe } from './pipes/diff-date.pipe';
 
 const modules = [
   RouterModule,
@@ -44,7 +45,8 @@ const components = [
 ];
 
 const pipes = [
-  DescriptionReduce
+  DescriptionReduce,
+  DiffDatePipe
 ];
 
 @NgModule({

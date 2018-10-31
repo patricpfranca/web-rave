@@ -5,7 +5,7 @@
         <h6 class="font-weight-bold comment-name">{{ comment._user.firstName + ' ' + comment._user.lastName }}</h6>
         <span>
           <span>{{ comment.comment }}</span>
-          <small class="text-muted comment-time">HÁ 15 MINUTOS</small>
+          <small class="text-muted comment-time">{{ comment.createdAt | diffDate }}</small>
         </span>
       </div>
     </li>

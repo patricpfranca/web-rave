@@ -11,7 +11,8 @@ import { Observable, Subject } from 'rxjs';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [ EventsService ]
 })
 export class NavbarComponent implements OnInit {
 
@@ -21,7 +22,7 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private authentication: Authentication,
-    public eventsService: EventsService) { }
+    private eventsService: EventsService) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('currentUser')) {
@@ -36,8 +37,10 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  public searchItems(text: string) {
-    this.eventsService.searchTerm.next(text);
+  public searchItems(text: string): void {
+    // this.eventsService.searchTerm.next(text);
+    this.events = this.eventsService.searchEvents(text);
+    console.log(this.events);
   }
 
   public logout(): void {

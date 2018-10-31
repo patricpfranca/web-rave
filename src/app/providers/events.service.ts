@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class EventsService {
@@ -32,17 +32,19 @@ export class EventsService {
   }
 
   public searchEvents(value: string): Observable<Event[]> {
-    return this.http.get<Event[]>(`${environment.API}/events?title=${value}`);
+    return this.http.get<Event[]>(`${environment.API}/events?title=${value}`).pipe(
+      map((result: any) => result.json())
+    );
   }
 
-  public search(term: string) {
-    return this.searchTerm.pipe(
-      debounceTime(1000),
-      distinctUntilChanged()
-    ).subscribe(() => {
-      console.log('debounce', term);
-      this.searchEvents(term);
-    });
-  }
+  // public search(term: string) {
+  //   return this.searchTerm.pipe(
+  //     debounceTime(1000),
+  //     distinctUntilChanged()
+  //   ).subscribe(() => {
+  //     console.log('debounce', term);
+  //     this.searchEvents(term);
+  //   });
+  // }
 
 }

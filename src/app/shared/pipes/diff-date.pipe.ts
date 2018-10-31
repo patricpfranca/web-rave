@@ -7,21 +7,26 @@ import * as moment from 'moment';
 export class DiffDatePipe implements PipeTransform {
 
   transform(date: string): any {
-    const eDate = moment();
+    moment.updateLocale('pt', {
+      relativeTime: {
+        future: 'em %s',
+        past: '%s atrás',
+        s: 'alguns segundos',
+        ss: '%d segundos',
+        m: 'um minuto',
+        mm: '%d minutos',
+        h: 'uma hora',
+        hh: '%d horas',
+        d: 'um dia',
+        dd: '%d dias',
+        M: 'um mê',
+        MM: '%d meses',
+        y: 'um ano',
+        yy: '%d anos'
+      }
+    });
     const sDate = moment(date);
-
-    const duration = eDate.diff(sDate, 'minutes');
-
-    if (duration <= 60) {
-      const min = eDate.diff(sDate, 'minutes');
-      return `HÁ ${min} MINUTOS`;
-    } else if (duration <= 1440) {
-      const hrs = eDate.diff(sDate, 'hours');
-      return `HÁ ${hrs} HORAS`;
-    } else {
-      const days = eDate.diff(sDate, 'days');
-      return `HÁ ${days} DIAS`;
-    }
+    return sDate.fromNow();
   }
 
 }

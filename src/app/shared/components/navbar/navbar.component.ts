@@ -5,7 +5,8 @@ import { Authentication } from '../../../providers/authentication.service';
 import { EventsService } from '../../../providers/events.service';
 import { Event } from '../../models/event.interface';
 
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
+import { switchMap, debounceTime, distinctUntilChanged, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit {
   faUser = faUser;
   public events: Observable<Event[]>;
   public currentUser;
+  private subjectSearch: Subject<string> = new Subject<string>();
 
   constructor(
     private authentication: Authentication,
@@ -35,20 +37,29 @@ export class NavbarComponent implements OnInit {
           }
         });
     }
+
+    this.events = this.subjectSearch.pipe(
+      debounceTime(1000),
+      distinctUntilChanged(),
+      switchMap((term: string) => {
+        if (term.trim() === '') {
+          return of<Event[]>([]);
+        }
+        return this.eventsService.searchEvents(term);
+      }), catchError((erro) => {
+        return of<Event[]>([]);
+      })
+    );
+
+    this.events.subscribe((events: Event[]) => console.log(events));
   }
 
   public searchItems(text: string): void {
-    // this.eventsService.searchTerm.next(text);
-    this.events = this.eventsService.searchEvents(text);
-    console.log(this.events);
+    this.subjectSearch.next(text);
   }
 
   public logout(): void {
     this.authentication.logout();
-  }
-
-  public search(textSearch: string): void {
-    this.eventsService.searchEvents(textSearch);
   }
 
 }

@@ -21,6 +21,7 @@ export class NavbarComponent implements OnInit {
   public events: Observable<Event[]>;
   public currentUser;
   private subjectSearch: Subject<string> = new Subject<string>();
+  public event: Event[];
 
   constructor(
     private authentication: Authentication,
@@ -51,7 +52,10 @@ export class NavbarComponent implements OnInit {
       })
     );
 
-    this.events.subscribe((events: Event[]) => console.log(events));
+    this.events.subscribe((events: Event[]) => {
+      this.event = events;
+      console.log(this.event);
+    });
   }
 
   public searchItems(text: string): void {

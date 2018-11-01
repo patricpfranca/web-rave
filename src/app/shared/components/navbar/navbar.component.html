@@ -11,6 +11,9 @@
           <div class="inner-addon left-addon">
             <i class="fas fa-search"></i>
             <input class="form-control col-md-8" type="text" (keyup)="searchItems(searchEvent.value)" #searchEvent>
+            <ul class="list-group" style="position: absolute; z-index: 15;">
+              <li class="list-group-item" *ngFor="let events of event?.events">{{ events?.title }}</li>
+            </ul>
           </div>
         </div>
         <div class="col-md-4">

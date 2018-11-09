@@ -27,7 +27,8 @@
               <li class="nav-item menu-item-nav" *ngIf="!currentUser"><a class="nav-link" [routerLink]="['/login']">Entre</a></li>
               <li class="nav-item menu-item-nav dropdown" *ngIf="currentUser">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="currentUser" aria-haspopup="true" aria-expanded="false">
-                  Olá <i class="font-weight-bold" style="padding-right: 8px">{{ currentUser.firstName }}</i><i class="fas fa-angle-down"></i>
+                  <i class="far fa-user-circle fa-lg" style="padding-right: 3px;"></i>
+                  <i class="font-weight-bold" style="padding-right: 8px;">{{ currentUser.firstName }}</i><i class="fas fa-angle-down"></i>
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="currentUser">
                   <a [routerLink]="['/profile']" class="dropdown-item">Meu perfil</a>
